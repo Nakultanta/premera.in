@@ -44,7 +44,7 @@ export default function Home() {
       <div className="relative w-full max-w-[760px] px-[clamp(18px,5vw,56px)] py-[clamp(20px,4.5vw,48px)] text-center border border-antique-gold/50 outline outline-1 outline-antique-gold/20 outline-offset-[6px] bg-[#fcf3e6] overflow-hidden">
         {/* Eyebrow */}
         <p className="mb-4 text-antique-gold text-[.69rem] font-semibold tracking-[.34em] uppercase leading-relaxed animate-fade-up [animation-delay:100ms]">
-          A new expression of elegance
+          Ladies&rsquo; Suits &amp; Ethnic Wear
         </p>
 
         {/* Logo */}
@@ -64,14 +64,21 @@ export default function Home() {
         {/* Divider */}
         <div className="animate-fade-up [animation-delay:400ms]"><GoldDivider /></div>
 
-        {/* Heading */}
-        <h1 className="m-0 font-bodoni text-[clamp(1.7rem,4.5vw,2.55rem)] font-medium tracking-[.055em] leading-tight text-deep-bronze animate-fade-up [animation-delay:500ms]">
+        {/* Heading — H1 is the brand tagline for SEO; Coming Soon is a secondary label */}
+        <p className="text-antique-gold text-[.69rem] font-semibold tracking-[.34em] uppercase leading-relaxed mb-3 animate-fade-up [animation-delay:500ms]">
           Coming Soon
+        </p>
+        <h1 className="m-0 font-bodoni text-[clamp(1.7rem,4.5vw,2.55rem)] font-medium tracking-[.055em] leading-tight text-deep-bronze animate-fade-up [animation-delay:560ms]">
+          Grace in Every Drape
         </h1>
 
-        {/* Tagline */}
-        <p className="max-w-[430px] mx-auto mt-3 mb-6 font-cormorant text-[clamp(1.15rem,2.8vw,1.55rem)] italic leading-snug text-warm-brown animate-fade-up [animation-delay:650ms]">
+        {/* Tagline + visible brand description */}
+        <p className="max-w-[430px] mx-auto mt-3 font-cormorant text-[clamp(1.15rem,2.8vw,1.55rem)] italic leading-snug text-warm-brown animate-fade-up [animation-delay:650ms]">
           Something beautiful is being draped just for you.
+        </p>
+        <p className="max-w-[400px] mx-auto mt-3 mb-6 text-[.82rem] leading-relaxed text-warm-brown animate-fade-up [animation-delay:700ms]">
+          PREMERA is a ladies&rsquo; suits and Indian ethnic wear brand crafted for women who
+          carry elegance in every step.
         </p>
 
         {/* Instagram CTA */}
