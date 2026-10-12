@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Bodoni_Moda, Cormorant_Garamond, Montserrat } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const bodoni = Bodoni_Moda({
@@ -42,6 +43,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${bodoni.variable} ${cormorant.variable} ${montserrat.variable}`}
     >
       <body className="font-montserrat text-espresso antialiased">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-LPF7521Q6J"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-LPF7521Q6J');
+          `}
+        </Script>
         {children}
       </body>
     </html>
