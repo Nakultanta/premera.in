@@ -74,16 +74,6 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = { themeColor: "#F7EDDD" };
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "PREMERA",
-  description: "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style.",
-  url: "https://www.premera.in",
-  logo: "https://www.premera.in/premera-logo-transparent-hd.png",
-  sameAs: ["https://www.instagram.com/premera.in/"],
-};
-
 // Inline script — runs before paint; light is default, dark only if explicitly saved
 const themeScript = `
 (function(){
@@ -109,10 +99,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Dark mode — must run before paint */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
       </head>
       <body className="font-montserrat text-espresso antialiased">
         <Script src="https://www.googletagmanager.com/gtag/js?id=G-LPF7521Q6J" strategy="afterInteractive" />

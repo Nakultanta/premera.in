@@ -6,8 +6,48 @@ import Reveal from "./components/Reveal";
 import { createClient } from "@/prismicio";
 import { asLink } from "@prismicio/client";
 
+const BASE_URL = "https://www.premera.in";
+
 export const metadata: Metadata = {
   title: "PREMERA | Elegant Ladies\u2019 Suits & Ethnic Wear",
+  description:
+    "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style. Discover a new expression of grace.",
+  alternates: { canonical: BASE_URL },
+  keywords: [
+    "ladies suits",
+    "ethnic wear",
+    "Indian fashion",
+    "unstitched suits",
+    "PREMERA",
+    "women fashion India",
+    "ladies ethnic wear online",
+    "salwar suits",
+  ],
+  openGraph: {
+    title: "PREMERA | Elegant Ladies\u2019 Suits & Ethnic Wear",
+    description:
+      "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style. Discover a new expression of grace.",
+    url: BASE_URL,
+    siteName: "PREMERA",
+    type: "website",
+    locale: "en_IN",
+    images: [
+      {
+        url: `${BASE_URL}/PREMERA_Metadata_Banner_1200x630.jpg`,
+        width: 1200,
+        height: 630,
+        alt: "PREMERA \u2014 Elegant Ladies\u2019 Suits & Ethnic Wear",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "PREMERA | Elegant Ladies\u2019 Suits & Ethnic Wear",
+    description:
+      "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style. Discover a new expression of grace.",
+    images: [`${BASE_URL}/PREMERA_Metadata_Banner_1200x630.jpg`],
+  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
 };
 
 const INSTAGRAM_URL = "https://www.instagram.com/premera.in/";
@@ -79,6 +119,34 @@ export default async function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "PREMERA",
+              url: BASE_URL,
+              logo: `${BASE_URL}/premera-logo-transparent-hd.png`,
+              description:
+                "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style.",
+              sameAs: ["https://www.instagram.com/premera.in/"],
+              contactPoint: {
+                "@type": "ContactPoint",
+                email: EMAIL,
+                contactType: "customer service",
+              },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "PREMERA",
+              url: BASE_URL,
+            },
+          ]),
+        }}
+      />
       <Header navLinks={navLinks} />
       <main id="home">
         {/* ── HERO ── */}
