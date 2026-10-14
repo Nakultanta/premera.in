@@ -1,24 +1,12 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import GoldDivider from "./components/GoldDivider";
 
 export const metadata: Metadata = {
   title: "Page Not Found",
   robots: { index: false, follow: false },
 };
-
-function GoldDivider() {
-  return (
-    <div
-      aria-hidden="true"
-      className="flex items-center justify-center gap-3 my-5 text-rich-gold"
-    >
-      <span className="block h-px w-[min(22vw,112px)] bg-gradient-to-r from-transparent to-rich-gold" />
-      <span className="inline-block w-2 h-2 rotate-45 border border-antique-gold bg-[#e9c17b]" />
-      <span className="block h-px w-[min(22vw,112px)] bg-gradient-to-l from-transparent to-rich-gold" />
-    </div>
-  );
-}
 
 export default function NotFound() {
   return (
@@ -28,7 +16,7 @@ export default function NotFound() {
         <div className="w-full flex items-center justify-center">
           <div className="w-full max-w-[60vw]">
             <Image
-              src="/PREMERE_LOGO_TRANSPARENT.svg"
+              src="/premera-logo-transparent-hd.png"
               alt="PREMERA — Ladies Suits — Grace in Every Drape"
               width={4305}
               height={3288}

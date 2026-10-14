@@ -1,0 +1,9 @@
+{
+  "repositoryName": "premera",
+  "routes": [
+    {
+      "type": "home_page",
+      "path": "/"
+    }
+  ]
+}

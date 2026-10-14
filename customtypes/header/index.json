@@ -1,0 +1,96 @@
+{
+  "format": "custom",
+  "id": "header",
+  "json": {
+    "Main": {
+      "show_header": {
+        "config": {
+          "default_value": true,
+          "label": "show Header",
+          "placeholder_false": "false",
+          "placeholder_true": "true"
+        },
+        "type": "Boolean"
+      },
+      "logo": {
+        "config": {
+          "constraint": {},
+          "label": "logo",
+          "thumbnails": []
+        },
+        "type": "Image"
+      },
+      "announcement_text": {
+        "config": {
+          "label": "announcement_text",
+          "placeholder": "Optional announcement strip"
+        },
+        "type": "Text"
+      },
+      "menu_items": {
+        "config": {
+          "fields": {
+            "label": {
+              "config": {
+                "label": "label",
+                "placeholder": ""
+              },
+              "type": "Text"
+            },
+            "link": {
+              "config": {
+                "allowTargetBlank": true,
+                "allowText": true,
+                "label": "link",
+                "placeholder": "",
+                "repeat": true,
+                "select": null,
+                "variants": [
+                  "Primary",
+                  "Secondary"
+                ]
+              },
+              "type": "Link"
+            }
+          },
+          "label": "menu_items",
+          "repeat": true
+        },
+        "type": "Group"
+      },
+      "instagram_link": {
+        "config": {
+          "allowTargetBlank": true,
+          "allowText": true,
+          "label": "instagram_link",
+          "placeholder": "",
+          "repeat": true,
+          "select": null,
+          "variants": [
+            "Primary",
+            "Secondary"
+          ]
+        },
+        "type": "Link"
+      },
+      "header_cta_label": {
+        "config": {
+          "label": "header_cta_label",
+          "placeholder": ""
+        },
+        "type": "Text"
+      },
+      "header_cta_link": {
+        "config": {
+          "constraint": {},
+          "label": "header_cta_link",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  },
+  "label": "Header",
+  "repeatable": false,
+  "status": true
+}

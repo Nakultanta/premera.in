@@ -1,31 +1,150 @@
 @import "tailwindcss";
 
-@theme inline {
-  --color-ivory:        #F7EDDD;
-  --color-ivory-light:  #FFFAF2;
-  --color-antique-gold: #A1631A;
-  --color-rich-gold:    #C3832D;
-  --color-deep-bronze:  #5C2D05;
-  --color-teal:         #115552;
-  --color-espresso:     #302013;
-  --color-warm-brown:   #745333;
-  --color-muted-gold:   #876b4a;
-  --color-cream:        #fff8ec;
+/* ── Tell Tailwind v4 to use .dark class for dark: variants ── */
+@variant dark (&:where(.dark, .dark *));
 
+@theme inline {
+  /* Primary */
+  --color-ivory:          #F7EDDD;
+  --color-ivory-light:    #FFFAF2;
+  --color-antique-gold:   #A1631A;
+  --color-rich-gold:      #C3832D;
+  --color-deep-bronze:    #5C2D05;
+  --color-teal:           #115552;
+  --color-emerald:        #053229;
+
+  /* Secondary */
+  --color-peacock-blue:   #022B7C;
+  --color-champagne:      #E4CEAE;
+  --color-sand:           #D5B68B;
+  --color-gold-highlight: #F6D68C;
+  --color-teal-highlight: #2BA18C;
+  --color-espresso:       #302013;
+
+  /* Accent */
+  --color-dusty-rose:     #C98E8A;
+  --color-muted-sage:     #87917A;
+
+  /* Aliases */
+  --color-warm-brown:     #745333;
+  --color-muted-gold:     #876b4a;
+  --color-cream:          #fff8ec;
+
+  /* Fonts */
   --font-bodoni:     var(--font-bodoni), Georgia, serif;
   --font-cormorant:  var(--font-cormorant), Georgia, serif;
   --font-montserrat: var(--font-montserrat), Arial, sans-serif;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; }
+/* ── Surface tokens — light (default) ── */
+:root {
+  --bg-page:        #FFFAF2;
+  --bg-card:        #FBF3E7;
+  --bg-card-alt:    #F5E8D0;
+  --bg-accent:      #EFE2CF;
+  --text-primary:   #1C0E04;
+  --text-secondary: #5C2D05;
+  --text-muted:     #6B4226;
+  --text-faint:     #947457;
+  --border-subtle:  #E8D7C0;
+  --border-gold:    rgba(161, 99, 26, 0.4);
+  --gold-line:      #D9B783;
 }
 
+/* ── Surface tokens — dark ── */
+.dark {
+  --bg-page:        #120A03;
+  --bg-card:        #1C1005;
+  --bg-card-alt:    #251608;
+  --bg-accent:      #2C1C0D;
+  --text-primary:   #F5EAD8;
+  --text-secondary: #E4CEAE;
+  --text-muted:     #C3A07A;
+  --text-faint:     #876B4A;
+  --border-subtle:  #3A2510;
+  --border-gold:    rgba(195, 131, 45, 0.35);
+  --gold-line:      #6B4A22;
+}
+
+/* ── Base ── */
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+/* ── Keyframes ── */
 @keyframes fade-up {
-  from { opacity: 0; transform: translateY(18px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-10px) rotate(1.5deg); }
+  66%       { transform: translateY(-5px) rotate(-1deg); }
+}
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50%       { transform: translateY(-14px) rotate(-1deg); }
+}
+@keyframes gradient-shift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes pulse-gold {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.9; }
+}
+@keyframes shimmer-line {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
 
-.animate-fade-up {
-  animation: fade-up 0.7s cubic-bezier(.22,.68,0,1.1) both;
+/* ── Animation utility classes ── */
+/* One-shot animations — triggered by JS adding the class */
+.animate-fade-up  { opacity: 1 !important; animation: fade-up  0.75s cubic-bezier(.22,.68,0,1.1) forwards; }
+.animate-fade-in  { opacity: 1 !important; animation: fade-in  0.6s ease forwards; }
+.animate-scale-in { opacity: 1 !important; animation: scale-in 0.55s cubic-bezier(.22,.68,0,1.1) forwards; }
+
+/* Continuous animations — always on */
+.animate-float        { animation: float          6s ease-in-out infinite; }
+.animate-float-slow   { animation: float-slow     9s ease-in-out infinite; }
+.animate-pulse-gold   { animation: pulse-gold     3s ease-in-out infinite; }
+.animate-spin-slow    { animation: spin-slow      18s linear infinite; }
+.animate-gradient     { animation: gradient-shift 8s ease infinite; background-size: 200% 200%; }
+
+/* Shimmer overlay on an element */
+.shimmer-overlay {
+  position: relative;
+  overflow: hidden;
+}
+.shimmer-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%);
+  animation: shimmer-line 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }

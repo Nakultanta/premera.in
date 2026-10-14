@@ -1,0 +1,62 @@
+{
+  "description": "CommingSoonBanner",
+  "id": "comming_soon_banner",
+  "name": "CommingSoonBanner",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "heading1": {
+          "config": {
+            "label": "heading1",
+            "placeholder": "Ladies’ Suits & Ethnic Wear"
+          },
+          "type": "Text"
+        },
+        "hero_image": {
+          "config": {
+            "constraint": {},
+            "label": "heroImage",
+            "thumbnails": []
+          },
+          "type": "Image"
+        },
+        "optional_border_image": {
+          "config": {
+            "constraint": {},
+            "label": "OptionalBorderImage",
+            "thumbnails": []
+          },
+          "type": "Image"
+        },
+        "heading2": {
+          "config": {
+            "label": "heading2",
+            "placeholder": "Grace in Every Drape"
+          },
+          "type": "Text"
+        },
+        "heading3": {
+          "config": {
+            "label": "heading3",
+            "placeholder": "Timeless elegance crafted for women who carry grace in every step."
+          },
+          "type": "Text"
+        },
+        "heading4": {
+          "config": {
+            "label": "heading4",
+            "placeholder": ""
+          },
+          "type": "Text"
+        }
+      },
+      "version": "initial"
+    }
+  ]
+}

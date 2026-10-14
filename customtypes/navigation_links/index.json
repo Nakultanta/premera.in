@@ -1,0 +1,31 @@
+{
+  "format": "custom",
+  "id": "navigation_links",
+  "json": {
+    "Main": {
+      "sidebar_links": {
+        "config": {
+          "fields": {
+            "links": {
+              "config": {
+                "allowTargetBlank": true,
+                "allowText": true,
+                "label": "links",
+                "placeholder": "",
+                "repeat": false,
+                "select": null
+              },
+              "type": "Link"
+            }
+          },
+          "label": "sidebarLinks",
+          "repeat": true
+        },
+        "type": "Group"
+      }
+    }
+  },
+  "label": "NavigationLinks",
+  "repeatable": false,
+  "status": true
+}

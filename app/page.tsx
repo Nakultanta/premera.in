@@ -1,103 +1,520 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Reveal from "./components/Reveal";
+import { createClient } from "@/prismicio";
+import { asLink } from "@prismicio/client";
 
-function GoldDivider() {
+export const metadata: Metadata = {
+  title: "PREMERA | Elegant Ladies\u2019 Suits & Ethnic Wear",
+};
+
+const INSTAGRAM_URL = "https://www.instagram.com/premera.in/";
+const EMAIL = "premera.studio@gmail.com";
+
+function Ornament() {
   return (
-    <div
-      aria-hidden="true"
-      className="flex items-center justify-center gap-3 my-5 text-rich-gold"
-    >
-      <span className="block h-px w-[min(22vw,112px)] bg-gradient-to-r from-transparent to-rich-gold" />
-      <span className="inline-block w-2 h-2 rotate-45 border border-antique-gold bg-[#e9c17b]" />
-      <span className="block h-px w-[min(22vw,112px)] bg-gradient-to-l from-transparent to-rich-gold" />
+    <div aria-hidden="true" className="flex items-center justify-center gap-3">
+      <span
+        className="block h-px w-[43px]"
+        style={{ background: "var(--gold-line)" }}
+      />
+      <span className="inline-block h-2 w-2 rotate-45 border border-[#A1631A] bg-[#ecd3a9]" />
+      <span
+        className="block h-px w-[43px]"
+        style={{ background: "var(--gold-line)" }}
+      />
     </div>
   );
 }
 
-function InstagramIcon() {
+function InstagramIcon({ size = 18 }: { size?: number }) {
   return (
     <svg
-      width="18"
-      height="18"
+      width={size}
+      height={size}
       viewBox="0 0 24 24"
       fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
       aria-hidden="true"
       className="shrink-0"
     >
-      <rect
-        x="3"
-        y="3"
-        width="18"
-        height="18"
-        rx="5"
-        stroke="currentColor"
-        strokeWidth="1.8"
-      />
-      <circle cx="12" cy="12" r="4" stroke="currentColor" strokeWidth="1.8" />
-      <circle cx="17.5" cy="6.7" r="1.1" fill="currentColor" />
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="18" cy="6" r="0.8" fill="currentColor" />
     </svg>
   );
 }
 
-export default function Home() {
-  return (
-    <main className="min-h-screen grid place-items-center p-[clamp(16px,4vw,44px)] bg-[radial-gradient(ellipse_at_50%_18%,rgba(255,255,255,.92),transparent_55%),linear-gradient(135deg,#FFFAF2,#F7EDDD_58%,#f0dfc5)]">
-      <div className="relative w-full max-w-[760px] px-[clamp(18px,5vw,56px)] py-[clamp(20px,4.5vw,48px)] text-center border border-antique-gold/50 outline outline-1 outline-antique-gold/20 outline-offset-[6px] bg-[#fcf3e6] overflow-hidden">
-        {/* Eyebrow */}
-        <p className="mb-4 text-antique-gold text-[.69rem] font-semibold tracking-[.34em] uppercase leading-relaxed animate-fade-up [animation-delay:100ms]">
-          Ladies&rsquo; Suits &amp; Ethnic Wear
-        </p>
+const pillars = [
+  {
+    num: "01",
+    title: "Unstitched Suits",
+    body: "Premium fabrics, hand-selected for drape and texture — ready to be tailored to your perfect fit.",
+  },
+  {
+    num: "02",
+    title: "Ethnic Wear",
+    body: "Thoughtfully curated ethnic wear — from festive occasion pieces to everyday elegance, rooted in Indian craft.",
+  },
+  {
+    num: "03",
+    title: "Curated Collections",
+    body: "Every piece is handpicked for elegance, quality and the quiet confidence it brings.",
+  },
+];
 
-        {/* Logo */}
-        <div className="w-full flex items-center justify-center animate-fade-up [animation-delay:250ms]">
-          <div className="w-full max-w-[60vw]">
+export default async function Home() {
+  const client = createClient();
+  const navDoc = await client.getSingle("navigation_links").catch(() => null);
+  const navLinks = (navDoc?.data.sidebar_links ?? []).map((item) => ({
+    label: item.links.text ?? "",
+    href: asLink(item.links) ?? "#",
+  }));
+  const year = new Date().getFullYear();
+
+  return (
+    <>
+      <Header navLinks={navLinks} />
+      <main id="home">
+        {/* ── HERO ── */}
+        <section
+          aria-label="Hero"
+          className="relative overflow-hidden"
+          style={{ background: "var(--bg-page)" }}
+        >
+          {/* Light theme: warm radial glow left */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(ellipse at 12% 40%, rgba(195,131,45,.14) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(161,99,26,.08) 0%, transparent 45%)",
+            }}
+          />
+
+          {/* Dark theme overlay handled via dark: on the section bg */}
+
+          {/* Floating ornaments — always visible, continuous animation */}
+          <span
+            aria-hidden="true"
+            className="animate-float pointer-events-none absolute top-[14%] left-[6%] text-[#A1631A] text-2xl hidden md:block"
+            style={{ opacity: 0.35, animationDelay: "0s" }}
+          >
+            ✦
+          </span>
+          <span
+            aria-hidden="true"
+            className="animate-float-slow pointer-events-none absolute top-[55%] right-[5%] text-[#C3832D] text-xl hidden md:block"
+            style={{ opacity: 0.25, animationDelay: "2.5s" }}
+          >
+            ✳
+          </span>
+          <span
+            aria-hidden="true"
+            className="animate-float pointer-events-none absolute bottom-[20%] left-[10%] text-[#A1631A] text-base hidden md:block"
+            style={{ opacity: 0.2, animationDelay: "4s" }}
+          >
+            ◆
+          </span>
+          <span
+            aria-hidden="true"
+            className="animate-float-slow pointer-events-none absolute top-[25%] right-[18%] text-[#C3832D] text-sm hidden lg:block"
+            style={{ opacity: 0.18, animationDelay: "1.5s" }}
+          >
+            ✦
+          </span>
+
+          <div className="relative mx-auto grid max-w-[1600px] grid-cols-1 items-center px-5 pb-14 pt-10 md:grid-cols-2 md:gap-14 md:px-10 md:py-20 lg:px-16 lg:py-24">
+            {/* ── Copy ── */}
+            <div className="">
+              <Reveal delay={80}>
+                <div className="mb-6 flex items-center gap-3">
+                  <span className="block h-px w-6 bg-[#A1631A]" />
+                  <span
+                    className="text-[9px] font-semibold tracking-[0.17em] uppercase"
+                    style={{ color: "var(--text-faint)" }}
+                  >
+                    Something beautiful is beginning
+                  </span>
+                </div>
+              </Reveal>
+
+              <Reveal delay={180} animation="fade-up">
+                <h1
+                  className="font-bodoni text-[clamp(52px,8vw,88px)] font-normal leading-[0.93] tracking-[-0.03em]"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  Grace in
+                  <br />
+                  every <em className="not-italic text-[#A1631A]">drape.</em>
+                </h1>
+              </Reveal>
+
+              <Reveal delay={300}>
+                <p
+                  className="mt-6 max-w-[390px] text-[13px] leading-[2]"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  A thoughtful world of ladies&rsquo; suits and ethnic wear,
+                  where timeless elegance meets the beauty of getting dressed.
+                </p>
+              </Reveal>
+
+              <Reveal delay={420}>
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <a
+                    href={INSTAGRAM_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shimmer-overlay group inline-flex min-h-[50px] items-center justify-center gap-3 border border-[#5C2D05] bg-[#5C2D05] px-6 text-[9px] font-semibold tracking-[0.1em] uppercase text-white transition-all duration-200 hover:bg-[#A1631A] hover:border-[#A1631A] hover:-translate-y-px hover:shadow-[0_6px_24px_rgba(161,99,26,.4)]"
+                  >
+                    Discover us on Instagram
+                    <span className="text-sm">↗</span>
+                  </a>
+                  <a
+                    href="#our-world"
+                    className="inline-flex min-h-[44px] items-center gap-2 text-[10px] tracking-[0.04em] transition hover:text-[#A1631A]"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    Get to know us
+                    <span className="text-[#A1631A]">↓</span>
+                  </a>
+                </div>
+              </Reveal>
+
+              <Reveal delay={580} animation="fade-in">
+                <div
+                  className="mt-10 flex items-center gap-2.5 font-cormorant text-[15px] italic"
+                  style={{ color: "var(--text-faint)" }}
+                >
+                  <span className="animate-pulse-gold text-[#A1631A] not-italic text-lg">
+                    ✳
+                  </span>
+                  A little elegance is on its way.
+                </div>
+              </Reveal>
+            </div>
+
+            {/* ── Campaign image frame — mobile ── */}
+            <div className="-mx-5 md:hidden">
+              <div className="relative w-full" style={{ aspectRatio: "3/4" }}>
+                <Image
+                  src="/PREMERA_Campaign_450x620.jpg"
+                  alt="PREMERA — Grace in Every Drape"
+                  fill
+                  priority
+                  className="object-cover object-center"
+                  sizes="100vw"
+                />
+                <div
+                  className="absolute bottom-0 left-0 right-0 flex min-h-[48px] items-center justify-between gap-3 px-4 py-3 backdrop-blur-sm"
+                  style={{ background: "rgba(251,243,231,0.88)" }}
+                >
+                  <span className="font-bodoni text-[17px] tracking-[0.12em] text-[#5C2D05]">PREMERA</span>
+                  <span className="text-right text-[7px] tracking-[0.11em] uppercase text-[#947457]">An Expression of Elegance</span>
+                </div>
+              </div>
+            </div>
+
+            {/* ── Campaign image frame — desktop ── */}
+            <Reveal delay={100} animation="scale-in" className="hidden md:block">
+              <div className="relative">
+                <div
+                  className="relative overflow-hidden"
+                  style={{
+                    aspectRatio: "3/4",
+                    maxHeight: "clamp(340px,80vw,640px)",
+                  }}
+                >
+                  <Image
+                    src="/PREMERA_Campaign_450x620.jpg"
+                    alt="PREMERA — Grace in Every Drape"
+                    fill
+                    priority
+                    className="object-cover object-center"
+                    sizes="50vw"
+                  />
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute inset-[10px] border border-white/20"
+                  />
+                  <div
+                    className="absolute bottom-0 left-0 right-0 flex min-h-[48px] items-center justify-between gap-3 px-4 py-3 backdrop-blur-sm"
+                    style={{ background: "rgba(251,243,231,0.88)" }}
+                  >
+                    <span className="font-bodoni text-[17px] tracking-[0.12em] text-[#5C2D05]">PREMERA</span>
+                    <span className="text-right text-[7px] tracking-[0.11em] uppercase text-[#947457]">An Expression of Elegance</span>
+                  </div>
+                </div>
+                <span
+                  aria-hidden="true"
+                  className="absolute -right-7 top-1/2 -translate-y-1/2 rotate-90 whitespace-nowrap text-[8px] tracking-[0.16em] uppercase"
+                  style={{ color: "var(--text-faint)" }}
+                >
+                  The Art of Dressing Beautifully
+                </span>
+                <span
+                  aria-hidden="true"
+                  className="animate-pulse-gold absolute -top-4 right-0 text-[22px] text-[#A1631A]"
+                >
+                  ✳
+                </span>
+              </div>
+            </Reveal>
+          </div>
+
+          {/* Scroll cue */}
+          <a
+            href="#our-world"
+            className="absolute bottom-8 left-[8%] hidden items-center gap-3.5 text-[8px] tracking-[0.14em] uppercase transition hover:text-[#A1631A] md:flex"
+            style={{ color: "var(--text-faint)" }}
+          >
+            Scroll to explore
+            <span
+              className="block h-px w-10"
+              style={{ background: "var(--gold-line)" }}
+            />
+          </a>
+        </section>
+
+        {/* ── PILLARS — noticeably different bg for contrast ── */}
+        <section
+          id="our-world"
+          aria-label="What we offer"
+          className="px-5 py-16 md:px-10 md:py-24 lg:px-16"
+          style={{
+            background: "var(--bg-card)",
+            borderTop: "2px solid var(--border-subtle)",
+          }}
+        >
+          <div className="mx-auto max-w-[1200px]">
+            <Reveal className="mb-12 text-center">
+              <Ornament />
+              <p
+                className="mt-5 text-[9px] font-semibold tracking-[0.2em] uppercase"
+                style={{ color: "var(--text-faint)" }}
+              >
+                A Note from PREMERA
+              </p>
+              <h2
+                className="mt-5 font-bodoni text-[clamp(32px,5vw,52px)] font-normal leading-[1.08] tracking-[-0.02em]"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Elegance isn&rsquo;t just
+                <br />
+                what you wear. It&rsquo;s{" "}
+                <em className="not-italic text-[#A1631A]">how you feel.</em>
+              </h2>
+              <p
+                className="mx-auto mt-5 max-w-[500px] text-[12px] leading-[2.1]"
+                style={{ color: "var(--text-muted)" }}
+              >
+                PREMERA is a celebration of ladies&rsquo; suits and ethnic wear,
+                inspired by the little details that make an outfit feel special.
+                We&rsquo;re preparing our first chapter, and we&rsquo;d love for
+                you to be part of the journey.
+              </p>
+            </Reveal>
+
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-3">
+              {pillars.map((p, i) => (
+                <Reveal key={p.num} delay={i * 130}>
+                  <div
+                    className="group relative h-full p-7 transition-all duration-300 hover:shadow-[0_8px_32px_rgba(161,99,26,.14)]"
+                    style={{
+                      border: "1px solid var(--border-subtle)",
+                      background: "var(--bg-page)",
+                    }}
+                  >
+                    <span className="absolute top-2 left-2 h-3 w-3 border-t border-l border-[#C3832D]/35 transition-all duration-300 group-hover:border-[#C3832D]" />
+                    <span className="absolute top-2 right-2 h-3 w-3 border-t border-r border-[#C3832D]/35 transition-all duration-300 group-hover:border-[#C3832D]" />
+                    <span className="absolute bottom-2 left-2 h-3 w-3 border-b border-l border-[#C3832D]/35 transition-all duration-300 group-hover:border-[#C3832D]" />
+                    <span className="absolute bottom-2 right-2 h-3 w-3 border-b border-r border-[#C3832D]/35 transition-all duration-300 group-hover:border-[#C3832D]" />
+                    <span
+                      className="block text-[9px] tracking-[0.12em] mb-4"
+                      style={{ color: "var(--text-faint)" }}
+                    >
+                      {p.num}
+                    </span>
+                    <h3
+                      className="font-bodoni text-[20px] tracking-[0.04em] mb-3 transition-colors duration-200 group-hover:text-[#A1631A]"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {p.title}
+                    </h3>
+                    <p
+                      className="text-[12px] leading-[1.9]"
+                      style={{ color: "var(--text-muted)" }}
+                    >
+                      {p.body}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal className="mt-10 text-center">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] items-center gap-2 text-[10px] tracking-[0.04em] transition hover:text-[#A1631A]"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                Be part of our story <span className="text-[#A1631A]">↗</span>
+              </a>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ── INSTAGRAM CALLOUT — deep teal bg for strong contrast ── */}
+        <section
+          id="follow-us"
+          aria-label="Follow our journey"
+          className="relative overflow-hidden px-5 py-16 text-center md:px-10 md:py-24"
+          style={{
+            background: "#0e3f3d",
+            borderTop: "2px solid rgba(195,131,45,.25)",
+          }}
+        >
+          {/* Logo watermark */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 flex items-center justify-center"
+          >
             <Image
-              src="/PREMERE_LOGO_TRANSPARENT.svg"
-              alt="PREMERA — Ladies Suits — Grace in Every Drape"
-              width={4305}
-              height={3288}
-              priority
-              className="block w-full max-w-[590px] max-h-[63vh] object-contain mx-auto"
+              src="/prema-logo-withhout-text-removebg.png"
+              alt=""
+              width={600}
+              height={600}
+              className="h-[460px] w-auto max-w-none object-contain select-none"
+              style={{ opacity: 0.055 }}
             />
           </div>
-        </div>
 
-        {/* Divider */}
-        <div className="animate-fade-up [animation-delay:400ms]"><GoldDivider /></div>
+          {/* Spinning ring */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+          >
+            <div className="animate-spin-slow h-[360px] w-[360px] rounded-full border border-dashed border-[#C3832D]/20" />
+          </div>
 
-        {/* Heading — H1 is the brand tagline for SEO; Coming Soon is a secondary label */}
-        <p className="text-antique-gold text-[.69rem] font-semibold tracking-[.34em] uppercase leading-relaxed mb-3 animate-fade-up [animation-delay:500ms]">
-          Coming Soon
-        </p>
-        <h1 className="m-0 font-bodoni text-[clamp(1.7rem,4.5vw,2.55rem)] font-medium tracking-[.055em] leading-tight text-deep-bronze animate-fade-up [animation-delay:560ms]">
-          Grace in Every Drape
-        </h1>
+          {/* Floating sparkles */}
+          <span
+            aria-hidden="true"
+            className="animate-float pointer-events-none absolute top-[15%] left-[8%] text-[#C3832D] text-xl"
+            style={{ opacity: 0.4, animationDelay: "1s" }}
+          >
+            ✦
+          </span>
+          <span
+            aria-hidden="true"
+            className="animate-float-slow pointer-events-none absolute bottom-[15%] right-[8%] text-[#F6D68C] text-lg"
+            style={{ opacity: 0.3, animationDelay: "3s" }}
+          >
+            ✳
+          </span>
+          <span
+            aria-hidden="true"
+            className="animate-float pointer-events-none absolute top-[60%] left-[20%] text-[#C3832D] text-sm hidden md:block"
+            style={{ opacity: 0.2, animationDelay: "5s" }}
+          >
+            ◆
+          </span>
 
-        {/* Tagline + visible brand description */}
-        <p className="max-w-[430px] mx-auto mt-3 font-cormorant text-[clamp(1.15rem,2.8vw,1.55rem)] italic leading-snug text-warm-brown animate-fade-up [animation-delay:650ms]">
-          Something beautiful is being draped just for you.
-        </p>
-        <p className="max-w-[400px] mx-auto mt-3 mb-6 text-[.82rem] leading-relaxed text-warm-brown animate-fade-up [animation-delay:700ms]">
-          PREMERA is a ladies&rsquo; suits and Indian ethnic wear brand crafted for women who
-          carry elegance in every step.
-        </p>
+          <div className="relative mx-auto max-w-[430px]">
+            <Reveal animation="scale-in">
+              <div className="mx-auto mb-5 flex h-11 w-11 items-center justify-center rounded-full border border-[#C3832D]/50 text-[#F6D68C]">
+                <InstagramIcon size={19} />
+              </div>
+            </Reveal>
 
-        {/* Instagram CTA */}
-        <a
-          href="https://www.instagram.com/premera.in/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Follow PREMERA on Instagram"
-          className="inline-flex items-center justify-center gap-2.5 min-h-[48px] px-[22px] py-[13px] border border-antique-gold bg-deep-bronze text-[#fff8ec] text-[.76rem] font-semibold tracking-[.1em] uppercase no-underline transition-all duration-200 hover:bg-teal hover:shadow-[0_5px_18px_rgba(17,85,82,.18)] hover:-translate-y-px focus-visible:outline-[3px] focus-visible:outline-[#2BA18C] focus-visible:outline-offset-4 animate-fade-up [animation-delay:800ms]"
+            <Reveal delay={100}>
+              <p className="text-[9px] font-semibold tracking-[0.2em] uppercase text-[#C3832D]">
+                Our Journey Starts Here
+              </p>
+            </Reveal>
+
+            <Reveal delay={200}>
+              <h2 className="mt-4 font-bodoni text-[clamp(34px,6vw,52px)] font-normal leading-[1.08] tracking-[-0.02em] text-[#F5EAD8]">
+                First glimpses.
+                <br />
+                <em className="not-italic text-[#C3832D]">More to come.</em>
+              </h2>
+            </Reveal>
+
+            <Reveal delay={300}>
+              <p className="mx-auto mt-5 max-w-[345px] text-[12px] leading-[2] text-[#b8a08a]">
+                Discover our latest looks, little details, and behind-the-scenes
+                moments on Instagram.
+              </p>
+            </Reveal>
+
+            <Reveal delay={400}>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shimmer-overlay mt-7 inline-flex min-h-[50px] items-center justify-center gap-4 border border-[#C3832D]/60 px-6 text-[9px] font-semibold tracking-[0.085em] uppercase text-[#F5EAD8] transition-all duration-200 hover:bg-[#C3832D] hover:border-[#C3832D] hover:text-white hover:-translate-y-px hover:shadow-[0_6px_24px_rgba(195,131,45,.4)]"
+              >
+                Follow @premera.in <span className="text-sm">↗</span>
+              </a>
+            </Reveal>
+          </div>
+        </section>
+
+        {/* ── CONTACT ── */}
+        <section
+          id="contact"
+          aria-label="Contact"
+          className="px-5 py-16 text-center md:px-10 md:py-24"
+          style={{
+            background: "var(--bg-card-alt)",
+            borderTop: "2px solid var(--border-subtle)",
+          }}
         >
-          <InstagramIcon />
-          Follow @premera.in
-        </a>
+          <div className="mx-auto max-w-[480px]">
+            <Reveal>
+              <Ornament />
+              <p
+                className="mt-5 text-[9px] font-semibold tracking-[0.2em] uppercase"
+                style={{ color: "var(--text-faint)" }}
+              >
+                We&rsquo;d Love to Hear from You
+              </p>
+              <h2
+                className="mt-4 font-bodoni text-[clamp(36px,6vw,50px)] font-normal leading-[1.1] tracking-[-0.02em]"
+                style={{ color: "var(--text-primary)" }}
+              >
+                Let&rsquo;s stay{" "}
+                <em className="not-italic text-[#A1631A]">connected.</em>
+              </h2>
+              <p
+                className="mx-auto mt-5 max-w-[340px] text-[12px] leading-[2]"
+                style={{ color: "var(--text-muted)" }}
+              >
+                Questions, collaborations, or simply want to say hello? Our
+                inbox is open.
+              </p>
+              <a
+                href={`mailto:${EMAIL}`}
+                className="mt-6 inline-flex min-h-[44px] items-center justify-center gap-2 text-[clamp(11px,3vw,13px)] font-medium transition hover:text-[#A1631A] break-all"
+                style={{ color: "var(--text-secondary)" }}
+              >
+                {EMAIL} <span className="text-[15px]">↗</span>
+              </a>
+            </Reveal>
+          </div>
+        </section>
+      </main>
 
-        {/* Footer */}
-        <footer className="mt-7 text-muted-gold text-[.62rem] tracking-[.13em] uppercase leading-relaxed animate-fade-up [animation-delay:950ms]">
-          PREMERA · Ladies Suits · Grace in Every Drape
-        </footer>
-      </div>
-    </main>
+      <Footer year={year} />
+    </>
   );
 }
