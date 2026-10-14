@@ -1,0 +1,47 @@
+{
+  "description": "A shared card shown on all product pages — use for ordering instructions, WhatsApp details, etc.",
+  "id": "product_hero",
+  "name": "ProductHero",
+  "type": "SharedSlice",
+  "variations": [
+    {
+      "description": "Default",
+      "docURL": "...",
+      "id": "default",
+      "imageUrl": "",
+      "name": "Default",
+      "primary": {
+        "card_heading": {
+          "config": {
+            "label": "Card Heading",
+            "placeholder": "How to Order"
+          },
+          "type": "Text"
+        },
+        "card_details": {
+          "config": {
+            "label": "Card Details",
+            "placeholder": "DM us on Instagram @premera.in or WhatsApp us to place your order. We ship across India.",
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+          },
+          "type": "StructuredText"
+        },
+        "cta_label": {
+          "config": {
+            "label": "CTA Button Label",
+            "placeholder": "Order on WhatsApp"
+          },
+          "type": "Text"
+        },
+        "cta_link": {
+          "config": {
+            "label": "CTA Button Link",
+            "placeholder": "https://wa.me/91..."
+          },
+          "type": "Link"
+        }
+      },
+      "version": "initial"
+    }
+  ]
+}

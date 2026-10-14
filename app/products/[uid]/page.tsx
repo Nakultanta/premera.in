@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const d = page.data;
     return {
       title: d.meta_title || d.name || undefined,
-      description: d.meta_description || d.description || undefined,
+      description: d.meta_description || d.suit_type || undefined,
       openGraph: {
         images: d.meta_image?.url ? [{ url: d.meta_image.url }] : undefined,
       },
@@ -45,21 +45,28 @@ export default async function ProductRoute({ params }: Props) {
     .map((item) => ({
       url: (item.image as { url: string }).url,
       alt: (item.image as { alt?: string }).alt,
+      caption: (item as { caption?: string }).caption,
     }));
+
+  const instagramUrl =
+    d.instagram_url && "url" in d.instagram_url && d.instagram_url.url
+      ? d.instagram_url.url
+      : undefined;
 
   return (
     <>
       <Header />
       <ProductPage
-        name={d.name ?? ""}
-        price={d.price ?? 0}
-        code={d.code ?? ""}
-        description={d.description ?? ""}
-        in_stock={d.in_stock ?? true}
-        main_image={{ url: d.main_image?.url ?? "", alt: d.main_image?.alt ?? "" }}
+        name={d.name ?? undefined}
+        code={d.code ?? undefined}
+        suit_type={d.suit_type ?? undefined}
+        price={d.price ?? undefined}
+        in_stock={d.in_stock ?? undefined}
+        main_image={d.main_image?.url ? { url: d.main_image.url, alt: d.main_image.alt ?? "" } : undefined}
+        instagram_section_heading={d.instagram_section_heading ?? undefined}
+        instagram_url={instagramUrl}
         gallery={gallery}
-        instagram_url={"url" in d.instagram_url && d.instagram_url.url ? d.instagram_url.url : "https://www.instagram.com/premera.in/"}
-        whatsapp_number={d.whatsapp_number ?? ""}
+        slices={d.slices}
       />
       <Footer />
     </>

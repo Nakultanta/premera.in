@@ -1,0 +1,83 @@
+{
+  "format": "page",
+  "id": "product_page",
+  "json": {
+    "Main": {
+      "name": {
+        "config": { "label": "Suit Name", "placeholder": "e.g. Ivory Chikankari Suit" },
+        "type": "Text"
+      },
+      "code": {
+        "config": { "label": "Product Code", "placeholder": "e.g. PRE-001" },
+        "type": "Text"
+      },
+      "suit_type": {
+        "config": { "label": "Suit Type / Short Description", "placeholder": "e.g. Unstitched Cotton Suit · 2-piece" },
+        "type": "Text"
+      },
+      "price": {
+        "config": { "label": "Price (₹)" },
+        "type": "Number"
+      },
+      "in_stock": {
+        "config": { "default_value": true, "label": "Available" },
+        "type": "Boolean"
+      },
+      "main_image": {
+        "config": { "constraint": {}, "label": "Main Product Image", "thumbnails": [] },
+        "type": "Image"
+      },
+      "instagram_section_heading": {
+        "config": { "label": "Instagram Section Heading", "placeholder": "Watch the Suit in Motion" },
+        "type": "Text"
+      },
+      "instagram_url": {
+        "config": { "label": "Instagram Reel URL", "placeholder": "https://www.instagram.com/reel/..." },
+        "type": "Link"
+      },
+      "gallery": {
+        "config": { "label": "Product Gallery" },
+        "fields": {
+          "image": {
+            "config": { "constraint": {}, "label": "Gallery Image", "thumbnails": [] },
+            "type": "Image"
+          },
+          "caption": {
+            "config": { "label": "Caption (optional)", "placeholder": "" },
+            "type": "Text"
+          }
+        },
+        "type": "Group"
+      },
+      "slices": {
+        "config": {
+          "choices": {
+            "product_hero": {
+              "type": "SharedSlice"
+            }
+          },
+          "label": "Slice Zone"
+        },
+        "fieldset": "Slice Zone",
+        "type": "Slices"
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": { "label": "Meta Title", "placeholder": "A title of the page used for social media and search engines" },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": { "label": "Meta Description", "placeholder": "A brief summary of the page" },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": { "constraint": { "height": 630, "width": 1200 }, "label": "Meta Image", "thumbnails": [] },
+        "type": "Image"
+      }
+    }
+  },
+  "label": "ProductPage",
+  "repeatable": true,
+  "status": true
+}

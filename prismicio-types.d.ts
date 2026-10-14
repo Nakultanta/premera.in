@@ -400,21 +400,25 @@ export type NavigationLinksDocument<Lang extends string = string> = prismic.Pris
  */
 export interface ProductPageDocumentDataGalleryItem {
 	image: prismic.ImageField<never>;
+	caption: prismic.KeyTextField;
 }
+
+type ProductPageDocumentDataSlicesSlice = ProductHeroSlice;
 
 /**
  * Content for ProductPage documents
  */
 interface ProductPageDocumentData {
 	name: prismic.KeyTextField;
-	price: prismic.NumberField;
 	code: prismic.KeyTextField;
-	description: prismic.KeyTextField;
+	suit_type: prismic.KeyTextField;
+	price: prismic.NumberField;
 	in_stock: prismic.BooleanField;
 	main_image: prismic.ImageField<never>;
-	gallery: prismic.GroupField<Simplify<ProductPageDocumentDataGalleryItem>>;
+	instagram_section_heading: prismic.KeyTextField;
 	instagram_url: prismic.LinkField;
-	whatsapp_number: prismic.KeyTextField;
+	gallery: prismic.GroupField<Simplify<ProductPageDocumentDataGalleryItem>>;
+	slices: prismic.SliceZone<ProductPageDocumentDataSlicesSlice>;
 	meta_title: prismic.KeyTextField;
 	meta_description: prismic.KeyTextField;
 	meta_image: prismic.ImageField<never>;
@@ -429,6 +433,22 @@ interface ProductPageDocumentData {
 export type ProductPageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<ProductPageDocumentData>, "product_page", Lang>;
 
 export type AllDocumentTypes = FooterDocument | HeaderDocument | HomePageDocument | NavigationLinksDocument | ProductPageDocument;
+
+/**
+ * Primary content in *ProductHero → Default → Primary*
+ */
+export interface ProductHeroSliceDefaultPrimary {
+	card_heading: prismic.KeyTextField;
+	card_details: prismic.RichTextField;
+	cta_label: prismic.KeyTextField;
+	cta_link: prismic.LinkField;
+}
+
+export type ProductHeroSliceDefault = prismic.SharedSliceVariation<"default", Simplify<ProductHeroSliceDefaultPrimary>, never>;
+
+type ProductHeroSliceVariation = ProductHeroSliceDefault;
+
+export type ProductHeroSlice = prismic.SharedSlice<"product_hero", ProductHeroSliceVariation>;
 
 /**
  * Primary content in *CommingSoonBanner → Default → Primary*
@@ -548,11 +568,16 @@ declare module "@prismicio/client" {
 			ProductPageDocument,
 			ProductPageDocumentData,
 			ProductPageDocumentDataGalleryItem,
+			ProductPageDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			CommingSoonBannerSlice,
 			CommingSoonBannerSliceDefaultPrimary,
 			CommingSoonBannerSliceVariation,
-			CommingSoonBannerSliceDefault
+			CommingSoonBannerSliceDefault,
+			ProductHeroSlice,
+			ProductHeroSliceDefaultPrimary,
+			ProductHeroSliceVariation,
+			ProductHeroSliceDefault
 		}
 	}
 }
