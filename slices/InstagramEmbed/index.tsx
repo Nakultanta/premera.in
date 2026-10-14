@@ -5,13 +5,11 @@ import { type SliceComponentProps } from "@prismicio/react";
 export type InstagramEmbedProps = SliceComponentProps<Content.InstagramEmbedSlice>;
 
 function getEmbedUrl(raw: string): string | null {
-  // Accept full URL like https://www.instagram.com/reel/ABC123/ or just the ID
+  // Works with: full URL, pasted embed/blockquote HTML, or bare reel ID
   const match = raw.match(/instagram\.com\/reel\/([A-Za-z0-9_-]+)/);
-  if (match) return `https://www.instagram.com/reel/${match[1]}/embed/`;
-  // If user pasted just the reel ID
-  if (/^[A-Za-z0-9_-]{8,}$/.test(raw.trim())) {
-    return `https://www.instagram.com/reel/${raw.trim()}/embed/`;
-  }
+  if (match) return `https://www.instagram.com/reel/${match[1]}/embed/captioned/`;
+  if (/^[A-Za-z0-9_-]{8,}$/.test(raw.trim()))
+    return `https://www.instagram.com/reel/${raw.trim()}/embed/captioned/`;
   return null;
 }
 
@@ -31,16 +29,18 @@ const InstagramEmbed: FC<InstagramEmbedProps> = ({ slice }) => {
           {heading}
         </h2>
       )}
-      <div className="overflow-hidden rounded-2xl border border-[var(--border-subtle)] bg-[var(--bg-card)]">
-        <iframe
-          src={src}
-          title="Instagram Reel"
-          allowFullScreen
-          scrolling="no"
-          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          className="block w-full"
-          style={{ minHeight: 560, border: "none" }}
-        />
+      {/* Aspect ratio wrapper — 9:16 reel, capped at 540px wide */}
+      <div className="mx-auto w-full max-w-[540px]">
+        <div className="relative w-full" style={{ paddingBottom: "177.78%" }}>
+          <iframe
+            src={src}
+            title="Instagram Reel"
+            allowFullScreen
+            scrolling="no"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+            className="absolute inset-0 h-full w-full rounded-2xl border-0"
+          />
+        </div>
       </div>
     </section>
   );
