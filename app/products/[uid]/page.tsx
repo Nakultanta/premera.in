@@ -7,6 +7,8 @@ import ProductPage from "@/app/components/ProductPage";
 
 type Props = { params: Promise<{ uid: string }> };
 
+const BASE_URL = "https://www.premera.in";
+
 export async function generateStaticParams() {
   const client = createClient();
   const pages = await client.getAllByType("product_page");
@@ -19,12 +21,48 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const client = createClient();
     const page = await client.getByUID("product_page", uid);
     const d = page.data;
+
+    const title = d.meta_title || d.name || "Product";
+    const description =
+      d.meta_description ||
+      [d.suit_type, d.price ? `₹${Number(d.price).toLocaleString("en-IN")}` : null]
+        .filter(Boolean)
+        .join(" · ") ||
+      "Elegant ladies\u2019 suit by PREMERA.";
+    const ogImage = d.meta_image?.url || d.main_image?.url;
+    const canonical = `${BASE_URL}/products/${uid}`;
+
     return {
-      title: d.meta_title || d.name || undefined,
-      description: d.meta_description || d.suit_type || undefined,
+      title,
+      description,
+      alternates: { canonical },
+      keywords: [
+        d.name,
+        d.suit_type,
+        d.code,
+        "ladies suit",
+        "ethnic wear",
+        "PREMERA",
+        "Indian fashion",
+      ].filter(Boolean) as string[],
       openGraph: {
-        images: d.meta_image?.url ? [{ url: d.meta_image.url }] : undefined,
+        title,
+        description,
+        url: canonical,
+        siteName: "PREMERA",
+        type: "website",
+        locale: "en_IN",
+        images: ogImage
+          ? [{ url: ogImage, width: 1200, height: 630, alt: d.name ?? "PREMERA product" }]
+          : undefined,
       },
+      twitter: {
+        card: "summary_large_image",
+        title,
+        description,
+        images: ogImage ? [ogImage] : undefined,
+      },
+      robots: { index: true, follow: true },
     };
   } catch {
     return {};
@@ -53,8 +91,37 @@ export default async function ProductRoute({ params }: Props) {
       ? d.instagram_url.url
       : undefined;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: d.name,
+    description: d.suit_type ?? d.meta_description ?? undefined,
+    sku: d.code ?? undefined,
+    image: [d.main_image?.url, ...gallery.map((g) => g.url)].filter(Boolean),
+    brand: { "@type": "Brand", name: "PREMERA" },
+    url: `${BASE_URL}/products/${uid}`,
+    ...(d.price
+      ? {
+          offers: {
+            "@type": "Offer",
+            price: d.price,
+            priceCurrency: "INR",
+            availability: d.in_stock
+              ? "https://schema.org/InStock"
+              : "https://schema.org/OutOfStock",
+            url: `${BASE_URL}/products/${uid}`,
+            seller: { "@type": "Organization", name: "PREMERA" },
+          },
+        }
+      : {}),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <ProductPage
         name={d.name ?? undefined}
