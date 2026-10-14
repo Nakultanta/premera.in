@@ -7,48 +7,52 @@ import { createClient } from "@/prismicio";
 import { asLink } from "@prismicio/client";
 
 const BASE_URL = "https://www.premera.in";
+const DEFAULT_TITLE = "PREMERA | Elegant Ladies\u2019 Suits & Ethnic Wear";
+const DEFAULT_DESCRIPTION =
+  "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style. Discover a new expression of grace.";
+const DEFAULT_OG_IMAGE = `${BASE_URL}/PREMERA_Metadata_Banner_1200x630.jpg`;
 
-export const metadata: Metadata = {
-  title: "PREMERA | Elegant Ladies\u2019 Suits & Ethnic Wear",
-  description:
-    "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style. Discover a new expression of grace.",
-  alternates: { canonical: BASE_URL },
-  keywords: [
-    "ladies suits",
-    "ethnic wear",
-    "Indian fashion",
-    "unstitched suits",
-    "PREMERA",
-    "women fashion India",
-    "ladies ethnic wear online",
-    "salwar suits",
-  ],
-  openGraph: {
-    title: "PREMERA | Elegant Ladies\u2019 Suits & Ethnic Wear",
-    description:
-      "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style. Discover a new expression of grace.",
-    url: BASE_URL,
-    siteName: "PREMERA",
-    type: "website",
-    locale: "en_IN",
-    images: [
-      {
-        url: `${BASE_URL}/PREMERA_Metadata_Banner_1200x630.jpg`,
-        width: 1200,
-        height: 630,
-        alt: "PREMERA \u2014 Elegant Ladies\u2019 Suits & Ethnic Wear",
-      },
+export async function generateMetadata(): Promise<Metadata> {
+  const client = createClient();
+  const page = await client.getSingle("home_page").catch(() => null);
+  const d = page?.data;
+
+  const title = d?.meta_title || DEFAULT_TITLE;
+  const description = d?.meta_description || DEFAULT_DESCRIPTION;
+  const ogImage = d?.meta_image?.url || DEFAULT_OG_IMAGE;
+
+  return {
+    title,
+    description,
+    alternates: { canonical: BASE_URL },
+    keywords: [
+      "ladies suits",
+      "ethnic wear",
+      "Indian fashion",
+      "unstitched suits",
+      "PREMERA",
+      "women fashion India",
+      "ladies ethnic wear online",
+      "salwar suits",
     ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "PREMERA | Elegant Ladies\u2019 Suits & Ethnic Wear",
-    description:
-      "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style. Discover a new expression of grace.",
-    images: [`${BASE_URL}/PREMERA_Metadata_Banner_1200x630.jpg`],
-  },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
-};
+    openGraph: {
+      title,
+      description,
+      url: BASE_URL,
+      siteName: "PREMERA",
+      type: "website",
+      locale: "en_IN",
+      images: [{ url: ogImage, width: 1200, height: 630, alt: title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
+    robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  };
+}
 
 const INSTAGRAM_URL = "https://www.instagram.com/premera.in/";
 const EMAIL = "premera.studio@gmail.com";
