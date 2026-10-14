@@ -63,6 +63,37 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: ogImage ? [ogImage] : undefined,
       },
       robots: { index: true, follow: true },
+      other: {
+        "application/ld+json": JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: title,
+          description,
+          sku: page.data.code ?? undefined,
+          image: [
+            page.data.main_image?.url,
+            ...(page.data.gallery ?? [])
+              .filter((item) => !!(item.image as { url?: string })?.url)
+              .map((item) => (item.image as { url: string }).url),
+          ].filter(Boolean),
+          brand: { "@type": "Brand", name: "PREMERA" },
+          url: canonical,
+          ...(page.data.price
+            ? {
+                offers: {
+                  "@type": "Offer",
+                  price: page.data.price,
+                  priceCurrency: "INR",
+                  availability: page.data.in_stock
+                    ? "https://schema.org/InStock"
+                    : "https://schema.org/OutOfStock",
+                  url: canonical,
+                  seller: { "@type": "Organization", name: "PREMERA" },
+                },
+              }
+            : {}),
+        }),
+      },
     };
   } catch {
     return {};
@@ -91,37 +122,8 @@ export default async function ProductRoute({ params }: Props) {
       ? d.instagram_url.url
       : undefined;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: d.name,
-    description: d.suit_type ?? d.meta_description ?? undefined,
-    sku: d.code ?? undefined,
-    image: [d.main_image?.url, ...gallery.map((g) => g.url)].filter(Boolean),
-    brand: { "@type": "Brand", name: "PREMERA" },
-    url: `${BASE_URL}/products/${uid}`,
-    ...(d.price
-      ? {
-          offers: {
-            "@type": "Offer",
-            price: d.price,
-            priceCurrency: "INR",
-            availability: d.in_stock
-              ? "https://schema.org/InStock"
-              : "https://schema.org/OutOfStock",
-            url: `${BASE_URL}/products/${uid}`,
-            seller: { "@type": "Organization", name: "PREMERA" },
-          },
-        }
-      : {}),
-  };
-
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <Header />
       <ProductPage
         name={d.name ?? undefined}

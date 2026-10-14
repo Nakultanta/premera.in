@@ -51,6 +51,31 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [ogImage],
     },
     robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+    other: {
+      "application/ld+json": JSON.stringify([
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "PREMERA",
+          url: BASE_URL,
+          logo: `${BASE_URL}/premera-logo-transparent-hd.png`,
+          description:
+            "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style.",
+          sameAs: ["https://www.instagram.com/premera.in/"],
+          contactPoint: {
+            "@type": "ContactPoint",
+            email: "premera.studio@gmail.com",
+            contactType: "customer service",
+          },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "PREMERA",
+          url: BASE_URL,
+        },
+      ]),
+    },
   };
 }
 
@@ -123,34 +148,6 @@ export default async function Home() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([
-            {
-              "@context": "https://schema.org",
-              "@type": "Organization",
-              name: "PREMERA",
-              url: BASE_URL,
-              logo: `${BASE_URL}/premera-logo-transparent-hd.png`,
-              description:
-                "PREMERA brings timeless elegance to ladies\u2019 suits and ethnic wear, blending traditional charm with refined style.",
-              sameAs: ["https://www.instagram.com/premera.in/"],
-              contactPoint: {
-                "@type": "ContactPoint",
-                email: EMAIL,
-                contactType: "customer service",
-              },
-            },
-            {
-              "@context": "https://schema.org",
-              "@type": "WebSite",
-              name: "PREMERA",
-              url: BASE_URL,
-            },
-          ]),
-        }}
-      />
       <Header navLinks={navLinks} />
       <main id="home">
         {/* ── HERO ── */}
