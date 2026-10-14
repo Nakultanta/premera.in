@@ -5,7 +5,6 @@ import { type SliceComponentProps } from "@prismicio/react";
 export type InstagramEmbedProps = SliceComponentProps<Content.InstagramEmbedSlice>;
 
 function getEmbedUrl(raw: string): string | null {
-  // Works with: full URL, pasted embed/blockquote HTML, or bare reel ID
   const match = raw.match(/instagram\.com\/reel\/([A-Za-z0-9_-]+)/);
   if (match) return `https://www.instagram.com/reel/${match[1]}/embed/captioned/`;
   if (/^[A-Za-z0-9_-]{8,}$/.test(raw.trim()))
@@ -25,12 +24,12 @@ const InstagramEmbed: FC<InstagramEmbedProps> = ({ slice }) => {
       className="mt-8"
     >
       {heading && (
-        <h2 className="mb-4 font-bodoni text-[1.4rem] font-semibold text-[var(--text-primary)]">
-          {heading}
-        </h2>
+        <div className="mb-4">
+          <p className="mb-2 text-[9px] font-semibold tracking-[0.2em] uppercase text-[var(--text-faint)]">{heading}</p>
+          <span className="block h-px w-full" style={{ background: "var(--border-subtle)" }} />
+        </div>
       )}
-      {/* Aspect ratio wrapper — 9:16 reel, capped at 540px wide */}
-      <div className="mx-auto w-full max-w-[540px]">
+      <div className="mx-auto w-full max-w-[400px]">
         <div className="relative w-full" style={{ paddingBottom: "177.78%" }}>
           <iframe
             src={src}
