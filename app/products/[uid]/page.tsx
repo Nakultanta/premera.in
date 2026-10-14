@@ -72,9 +72,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           sku: page.data.code ?? undefined,
           image: [
             page.data.main_image?.url,
-            ...(page.data.gallery ?? [])
-              .filter((item) => !!(item.image as { url?: string })?.url)
-              .map((item) => (item.image as { url: string }).url),
           ].filter(Boolean),
           brand: { "@type": "Brand", name: "PREMERA" },
           url: canonical,
@@ -109,19 +106,6 @@ export default async function ProductRoute({ params }: Props) {
 
   const d = page.data;
 
-  const gallery = (d.gallery ?? [])
-    .filter((item) => !!(item.image as { url?: string | null })?.url)
-    .map((item) => ({
-      url: (item.image as { url: string }).url,
-      alt: (item.image as { alt?: string }).alt,
-      caption: (item as { caption?: string }).caption,
-    }));
-
-  const instagramUrl =
-    d.instagram_url && "url" in d.instagram_url && d.instagram_url.url
-      ? d.instagram_url.url
-      : undefined;
-
   return (
     <>
       <Header />
@@ -132,9 +116,6 @@ export default async function ProductRoute({ params }: Props) {
         price={d.price ?? undefined}
         in_stock={d.in_stock ?? undefined}
         main_image={d.main_image?.url ? { url: d.main_image.url, alt: d.main_image.alt ?? "" } : undefined}
-        instagram_section_heading={d.instagram_section_heading ?? undefined}
-        instagram_url={instagramUrl}
-        gallery={gallery}
         slices={d.slices}
       />
       <Footer />

@@ -3,6 +3,10 @@
   "id": "product_page",
   "json": {
     "Main": {
+      "uid": {
+        "config": { "label": "ProductURL" },
+        "type": "UID"
+      },
       "name": {
         "config": { "label": "Suit Name", "placeholder": "e.g. Ivory Chikankari Suit" },
         "type": "Text"
@@ -27,34 +31,12 @@
         "config": { "constraint": {}, "label": "Main Product Image", "thumbnails": [] },
         "type": "Image"
       },
-      "instagram_section_heading": {
-        "config": { "label": "Instagram Section Heading", "placeholder": "Watch the Suit in Motion" },
-        "type": "Text"
-      },
-      "instagram_url": {
-        "config": { "label": "Instagram Reel URL", "placeholder": "https://www.instagram.com/reel/..." },
-        "type": "Link"
-      },
-      "gallery": {
-        "config": { "label": "Product Gallery" },
-        "fields": {
-          "image": {
-            "config": { "constraint": {}, "label": "Gallery Image", "thumbnails": [] },
-            "type": "Image"
-          },
-          "caption": {
-            "config": { "label": "Caption (optional)", "placeholder": "" },
-            "type": "Text"
-          }
-        },
-        "type": "Group"
-      },
       "slices": {
         "config": {
           "choices": {
-            "product_hero": {
-              "type": "SharedSlice"
-            }
+            "product_gallery": { "type": "SharedSlice" },
+            "instagram_embed": { "type": "SharedSlice" },
+            "product_hero": { "type": "SharedSlice" }
           },
           "label": "Slice Zone"
         },

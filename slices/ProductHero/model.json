@@ -21,8 +21,8 @@
         "card_details": {
           "config": {
             "label": "Card Details",
-            "placeholder": "DM us on Instagram @premera.in or WhatsApp us to place your order. We ship across India.",
-            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item"
+            "multi": "paragraph,strong,em,hyperlink,list-item,o-list-item",
+            "placeholder": "DM us on Instagram @premera.in or WhatsApp us to place your order. We ship across India."
           },
           "type": "StructuredText"
         },
