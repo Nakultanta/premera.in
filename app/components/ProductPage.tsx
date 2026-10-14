@@ -44,7 +44,7 @@ export default function ProductPage({
 
         {/* ── Name & Code ── */}
         {(name || code) && (
-          <header className="mb-5 text-center">
+          <header className="mb-4">
             {name && (
               <h1 className="font-bodoni text-[clamp(1.7rem,5vw,2.6rem)] font-semibold leading-tight tracking-[.03em] text-[var(--text-primary)]">
                 {name}
@@ -77,28 +77,28 @@ export default function ProductPage({
 
         {/* ── Suit type ── */}
         {suit_type && (
-          <p className="mt-5 text-center font-cormorant text-[1.2rem] italic leading-snug text-[var(--text-muted)]">
+          <p className="mt-2 font-cormorant text-[2rem] italic leading-snug text-[var(--text-muted)]">
             {suit_type}
           </p>
         )}
 
         {/* ── Price + Availability ── */}
         {(hasPrice || hasStock) && (
-          <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
+          <div className="mt-3 flex flex-wrap items-center gap-3">
             {hasPrice && (
-              <span className="font-bodoni text-[2rem] font-semibold text-antique-gold">
+              <span className="font-bodoni text-[1.4rem] font-semibold text-antique-gold">
                 ₹{price!.toLocaleString("en-IN")}
               </span>
             )}
             {hasStock && (
               <span
-                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-1.5 text-[.78rem] font-semibold tracking-[.1em] uppercase ${
+                className={`inline-flex items-center gap-1.5 border px-2.5 py-0.5 text-[.7rem] font-semibold tracking-[.12em] uppercase font-montserrat ${
                   in_stock
-                    ? "bg-emerald/10 text-teal-highlight border border-teal-highlight/30"
-                    : "bg-dusty-rose/10 text-dusty-rose border border-dusty-rose/30"
+                    ? "border-antique-gold/40 text-antique-gold bg-antique-gold/5"
+                    : "border-dusty-rose/40 text-dusty-rose bg-dusty-rose/5"
                 }`}
               >
-                <span className={`h-1.5 w-1.5 rounded-full ${in_stock ? "bg-teal-highlight" : "bg-dusty-rose"}`} />
+                <span className={`h-1 w-1 rounded-full ${in_stock ? "bg-antique-gold" : "bg-dusty-rose"}`} />
                 {in_stock ? "Available" : "Sold Out"}
               </span>
             )}

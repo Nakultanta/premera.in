@@ -143,9 +143,7 @@ export type CommingSoonBannerSlice = prismic.SharedSlice<"comming_soon_banner", 
 
 export interface InstagramEmbedSliceDefaultPrimary {
 	heading: prismic.KeyTextField;
-	reel_url: prismic.LinkField;
-	caption: prismic.KeyTextField;
-	sub_caption: prismic.KeyTextField;
+	embed_url: prismic.KeyTextField;
 }
 
 export type InstagramEmbedSliceDefault = prismic.SharedSliceVariation<"default", Simplify<InstagramEmbedSliceDefaultPrimary>, never>;

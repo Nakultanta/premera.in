@@ -1,5 +1,5 @@
 {
-  "description": "Instagram reel embed / link section for product pages",
+  "description": "Instagram reel embed for product pages",
   "id": "instagram_embed",
   "name": "InstagramEmbed",
   "type": "SharedSlice",
@@ -18,24 +18,10 @@
           },
           "type": "Text"
         },
-        "reel_url": {
+        "embed_url": {
           "config": {
             "label": "Instagram Reel URL",
-            "placeholder": "https://www.instagram.com/reel/..."
-          },
-          "type": "Link"
-        },
-        "caption": {
-          "config": {
-            "label": "Caption",
-            "placeholder": "See the fabric, print & drape"
-          },
-          "type": "Text"
-        },
-        "sub_caption": {
-          "config": {
-            "label": "Sub Caption",
-            "placeholder": "Watch the outfit in motion to explore its fabric, print and detailing."
+            "placeholder": "https://www.instagram.com/reel/ABC123xyz/"
           },
           "type": "Text"
         }
