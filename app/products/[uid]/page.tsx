@@ -41,8 +41,11 @@ export default async function ProductRoute({ params }: Props) {
   const d = page.data;
 
   const gallery = (d.gallery ?? [])
-    .map((item: { image?: { url?: string; alt?: string } }) => item.image)
-    .filter((img: { url?: string } | undefined): img is { url: string; alt?: string } => !!img?.url);
+    .filter((item) => !!(item.image as { url?: string | null })?.url)
+    .map((item) => ({
+      url: (item.image as { url: string }).url,
+      alt: (item.image as { alt?: string }).alt,
+    }));
 
   return (
     <>
@@ -55,7 +58,7 @@ export default async function ProductRoute({ params }: Props) {
         in_stock={d.in_stock ?? true}
         main_image={{ url: d.main_image?.url ?? "", alt: d.main_image?.alt ?? "" }}
         gallery={gallery}
-        instagram_url={d.instagram_url?.url ?? "https://www.instagram.com/premera.in/"}
+        instagram_url={"url" in d.instagram_url && d.instagram_url.url ? d.instagram_url.url : "https://www.instagram.com/premera.in/"}
         whatsapp_number={d.whatsapp_number ?? ""}
       />
       <Footer />

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Button } from "primereact/button";
 import { Tag } from "primereact/tag";
-import { Image } from "primereact/image";
+import NextImage from "next/image";
 
 type GalleryImage = { url: string; alt?: string };
 
@@ -41,6 +41,7 @@ export default function ProductPage({
   whatsapp_number,
 }: ProductPageProps) {
   const [selectedImage, setSelectedImage] = useState(main_image.url);
+  const [lightbox, setLightbox] = useState<string | null>(null);
 
   const whatsappMessage = encodeURIComponent(
     `Hi, I am interested in ${name} (${code}). Please confirm availability, shipping charges and total price.`
@@ -52,12 +53,17 @@ export default function ProductPage({
       <article className="mx-auto max-w-[760px] rounded-3xl border border-[#e5e5e5] bg-white p-5">
 
         {/* Hero image */}
-        <div className="relative overflow-hidden rounded-[20px] bg-[#f1eeee]" style={{ aspectRatio: "1/1" }}>
-          <Image
+        <div
+          className="relative overflow-hidden rounded-[20px] bg-[#f1eeee] cursor-zoom-in"
+          style={{ aspectRatio: "1/1" }}
+          onClick={() => setLightbox(selectedImage)}
+        >
+          <NextImage
             src={selectedImage}
             alt={name}
-            imageClassName="w-full h-full object-cover"
-            preview
+            fill
+            className="object-cover"
+            sizes="(max-width: 760px) 100vw, 760px"
           />
           <span className="absolute bottom-4 left-4 rounded-full bg-black/65 px-4 py-2 text-sm font-semibold text-white">
             {code}
@@ -161,6 +167,24 @@ export default function ProductPage({
           Actual colour may vary slightly due to photography lighting. All prices are inclusive of GST.
         </p>
       </article>
+
+      {/* Lightbox */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80"
+          onClick={() => setLightbox(null)}
+        >
+          <div className="relative max-h-[90vh] max-w-[90vw]" style={{ aspectRatio: "1/1", width: "min(90vw, 90vh)" }}>
+            <NextImage src={lightbox} alt={name} fill className="object-contain" sizes="90vw" />
+          </div>
+          <button
+            type="button"
+            aria-label="Close preview"
+            className="absolute top-4 right-4 text-white text-3xl leading-none hover:opacity-70"
+            onClick={() => setLightbox(null)}
+          >×</button>
+        </div>
+      )}
     </main>
   );
 }

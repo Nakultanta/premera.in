@@ -395,7 +395,40 @@ interface NavigationLinksDocumentData {
  */
 export type NavigationLinksDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<NavigationLinksDocumentData>, "navigation_links", Lang>;
 
-export type AllDocumentTypes = FooterDocument | HeaderDocument | HomePageDocument | NavigationLinksDocument;
+/**
+ * Item in *ProductPage → gallery*
+ */
+export interface ProductPageDocumentDataGalleryItem {
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * Content for ProductPage documents
+ */
+interface ProductPageDocumentData {
+	name: prismic.KeyTextField;
+	price: prismic.NumberField;
+	code: prismic.KeyTextField;
+	description: prismic.KeyTextField;
+	in_stock: prismic.BooleanField;
+	main_image: prismic.ImageField<never>;
+	gallery: prismic.GroupField<Simplify<ProductPageDocumentDataGalleryItem>>;
+	instagram_url: prismic.LinkField;
+	whatsapp_number: prismic.KeyTextField;
+	meta_title: prismic.KeyTextField;
+	meta_description: prismic.KeyTextField;
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * ProductPage document from Prismic
+ *
+ * - **API ID**: `product_page`
+ * - **Repeatable**: `true`
+ */
+export type ProductPageDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<ProductPageDocumentData>, "product_page", Lang>;
+
+export type AllDocumentTypes = FooterDocument | HeaderDocument | HomePageDocument | NavigationLinksDocument | ProductPageDocument;
 
 /**
  * Primary content in *CommingSoonBanner → Default → Primary*
@@ -512,6 +545,9 @@ declare module "@prismicio/client" {
 			NavigationLinksDocument,
 			NavigationLinksDocumentData,
 			NavigationLinksDocumentDataSidebarLinksItem,
+			ProductPageDocument,
+			ProductPageDocumentData,
+			ProductPageDocumentDataGalleryItem,
 			AllDocumentTypes,
 			CommingSoonBannerSlice,
 			CommingSoonBannerSliceDefaultPrimary,
