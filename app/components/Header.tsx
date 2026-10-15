@@ -3,6 +3,13 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
+const BANNER_ITEMS = [
+  "Now on Instagram \u2014 Follow @premera.in",
+  "Grace in Every Drape",
+  "Timeless Ladies\u2019 Suits & Ethnic Wear",
+  "Explore our latest looks on Instagram",
+];
+
 const INSTAGRAM_URL = "https://www.instagram.com/premera.in/";
 
 const fallbackLinks = [
@@ -28,6 +35,21 @@ export default function Header({ navLinks: prismicLinks }: { navLinks?: { label:
     ...(prismicLinks ?? []).map((l, i) => ({ ...l, num: String(fallbackLinks.length + i + 1).padStart(2, "0") })),
   ];
   const [menuOpen, setMenuOpen] = useState(false);
+  const [bannerVisible, setBannerVisible] = useState(true);
+  const [bannerIndex, setBannerIndex] = useState(0);
+  const [bannerFade, setBannerFade] = useState(true);
+
+  useEffect(() => {
+    if (!bannerVisible) return;
+    const interval = setInterval(() => {
+      setBannerFade(false);
+      setTimeout(() => {
+        setBannerIndex((i) => (i + 1) % BANNER_ITEMS.length);
+        setBannerFade(true);
+      }, 400);
+    }, 3800);
+    return () => clearInterval(interval);
+  }, [bannerVisible]);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -45,10 +67,31 @@ export default function Header({ navLinks: prismicLinks }: { navLinks?: { label:
   return (
     <>
       {/* Announcement bar */}
-      <div className="flex min-h-[34px] items-center justify-center gap-2.5 bg-[#f4e6d3] dark:bg-[#2c1c0d] px-4 py-1.5 text-center text-[11px] font-medium tracking-[0.13em] uppercase text-[#89603b] dark:text-[#c3a07a]">
-        <span className="h-[5px] w-[5px] rounded-full bg-[#A1631A] shrink-0" />
-        A new chapter in elegance is on its way
-      </div>
+      {bannerVisible && (
+        <div className="relative flex min-h-[36px] items-center justify-center bg-[#f4e6d3] dark:bg-[#2c1c0d] px-10">
+          {/* Fading text */}
+          <div
+            className="flex items-center gap-2 text-[10px] md:text-[11px] font-medium tracking-[0.10em] md:tracking-[0.16em] uppercase text-[#89603b] dark:text-[#c3a07a] whitespace-nowrap transition-opacity duration-400"
+            style={{ opacity: bannerFade ? 1 : 0 }}
+          >
+            <span className="hidden md:block h-[4px] w-[4px] rounded-full bg-[#A1631A] shrink-0" />
+            <span>{BANNER_ITEMS[bannerIndex]}</span>
+            <span className="hidden md:block h-[4px] w-[4px] rounded-full bg-[#A1631A] shrink-0" />
+          </div>
+          {/* Dismiss */}
+          <button
+            type="button"
+            onClick={() => setBannerVisible(false)}
+            aria-label="Dismiss announcement"
+            className="absolute right-3 top-1/2 -translate-y-1/2 flex h-6 w-6 items-center justify-center rounded-full text-[#89603b] dark:text-[#c3a07a] hover:bg-[#e8d0b0] dark:hover:bg-[#3a2510] transition"
+          >
+            <svg width="9" height="9" viewBox="0 0 10 10" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round">
+              <line x1="1" y1="1" x2="9" y2="9" />
+              <line x1="9" y1="1" x2="1" y2="9" />
+            </svg>
+          </button>
+        </div>
+      )}
 
       {/* Header */}
       <header className="sticky top-0 z-40 border-b border-[#e8d7c0] dark:border-[#3a2510] bg-[#fbf3e7] dark:bg-[#1a1008]">

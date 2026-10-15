@@ -50,7 +50,7 @@ export default function Footer({ year }: { year?: number }) {
 
             {/* Nav */}
             <nav aria-label="Footer navigation" className="flex flex-col items-center md:items-start gap-3">
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#5a3a1a] mb-1">Navigate</p>
+              <p className="text-[10px] tracking-[0.2em] uppercase text-[#4a2e14] mb-1">Navigate</p>
               {footerLinks.map((l) => (
                 <a
                   key={l.href}
@@ -64,7 +64,7 @@ export default function Footer({ year }: { year?: number }) {
 
             {/* Connect */}
             <div className="flex flex-col items-center md:items-start gap-3">
-              <p className="text-[10px] tracking-[0.2em] uppercase text-[#5a3a1a] mb-1">Connect</p>
+              <p className="text-[10px] tracking-[0.2em] uppercase text-[#4a2e14] mb-1">Connect</p>
               <a
                 href={INSTAGRAM_URL}
                 target="_blank"
@@ -86,20 +86,20 @@ export default function Footer({ year }: { year?: number }) {
           {/* Ornament divider */}
           <div className="my-10 flex items-center gap-4">
             <span className="flex-1 h-px" style={{ background: "linear-gradient(90deg, transparent, #3a2510)" }} />
-            <span className="inline-block h-[6px] w-[6px] rotate-45 border border-[#A1631A]/50 bg-[#3a2510]" />
+            <span className="inline-block h-[6px] w-[6px] rotate-45 border border-[#A1631A]/50 bg-[#2a1608]" />
             <span className="flex-1 h-px" style={{ background: "linear-gradient(90deg, #3a2510, transparent)" }} />
           </div>
 
-          {/* Bottom row — stacks on mobile */}
-          <div className="flex flex-col items-center gap-4 text-center md:flex-row md:justify-between md:text-left">
-            <span className="text-[10px] tracking-[0.08em] uppercase text-[#5a3a1a]">
+          {/* Bottom row */}
+          <div className="flex flex-col items-center gap-3 text-center md:flex-row md:justify-between md:text-left">
+            <span className="text-[10px] tracking-[0.08em] uppercase text-[#4a2e14]">
               &copy; {currentYear} PREMERA. All rights reserved.
             </span>
-            <span className="font-cormorant text-[16px] italic text-[#5a3a1a]">
+            <span className="font-cormorant text-[17px] italic text-[#6b4a28]">
               Grace in every drape.
             </span>
-            <div className="flex items-center gap-3">
-              <span className="text-[10px] tracking-[0.08em] uppercase text-[#5a3a1a]">Theme</span>
+            <div className="flex items-center gap-2.5">
+              <span className="text-[10px] tracking-[0.08em] uppercase text-[#4a2e14]">Theme</span>
               <ThemeToggle />
             </div>
           </div>

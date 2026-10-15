@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bodoni_Moda, Cormorant_Garamond, Montserrat } from "next/font/google";
 import Script from "next/script";
 import { PrismicPreview } from "@prismicio/next";
+import CustomCursor from "./components/CustomCursor";
 import { repositoryName } from "@/prismicio";
 import "./globals.css";
 
@@ -108,6 +109,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           gtag('js', new Date());
           gtag('config', 'G-LPF7521Q6J');
         `}</Script>
+        <CustomCursor />
         {children}
         <PrismicPreview repositoryName={repositoryName} />
       </body>

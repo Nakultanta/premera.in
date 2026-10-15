@@ -208,7 +208,7 @@ export default async function Home() {
                     className="text-[9px] font-semibold tracking-[0.17em] uppercase"
                     style={{ color: "var(--text-faint)" }}
                   >
-                    Something beautiful is beginning
+                    Now on Instagram
                   </span>
                 </div>
               </Reveal>
@@ -264,7 +264,7 @@ export default async function Home() {
                   <span className="animate-pulse-gold text-[#A1631A] not-italic text-lg">
                     ✳
                   </span>
-                  A little elegance is on its way.
+                  Discover us on Instagram.
                 </div>
               </Reveal>
             </div>
@@ -385,8 +385,7 @@ export default async function Home() {
               >
                 PREMERA is a celebration of ladies&rsquo; suits and ethnic wear,
                 inspired by the little details that make an outfit feel special.
-                We&rsquo;re preparing our first chapter, and we&rsquo;d love for
-                you to be part of the journey.
+                Follow our journey on Instagram and be part of the story.
               </p>
             </Reveal>
 
@@ -506,15 +505,15 @@ export default async function Home() {
 
             <Reveal delay={100}>
               <p className="text-[9px] font-semibold tracking-[0.2em] uppercase text-[#C3832D]">
-                Our Journey Starts Here
+                Follow Our Journey
               </p>
             </Reveal>
 
             <Reveal delay={200}>
               <h2 className="mt-4 font-bodoni text-[clamp(34px,6vw,52px)] font-normal leading-[1.08] tracking-[-0.02em] text-[#F5EAD8]">
-                First glimpses.
+                Fresh looks.
                 <br />
-                <em className="not-italic text-[#C3832D]">More to come.</em>
+                <em className="not-italic text-[#C3832D]">Every week.</em>
               </h2>
             </Reveal>
 
