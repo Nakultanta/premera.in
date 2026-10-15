@@ -1,4 +1,3 @@
-
 type Asset = { name: string; file: string; preview?: string };
 type Category = { title: string; assets: Asset[] };
 
@@ -12,7 +11,9 @@ const categories: Category[] = [
       { name: "Logo Transparent HD", file: "/premera-logo-transparent-hd.png", preview: "/premera-logo-transparent-hd.png" },
       { name: "Logo Without Text", file: "/prema-logo-withhout-text.png", preview: "/prema-logo-withhout-text.png" },
       { name: "Logo Without Text (No BG)", file: "/prema-logo-withhout-text-removebg.png", preview: "/prema-logo-withhout-text-removebg.png" },
+      { name: "Round Logo", file: "/RoundLogo.png", preview: "/RoundLogo.png" },
       { name: "Logo SVG Transparent", file: "/PREMERE_LOGO_TRANSPARENT.svg", preview: "/PREMERE_LOGO_TRANSPARENT.svg" },
+      { name: "Premera (PNG)", file: "/Premera Assets/Premera.png", preview: "/Premera Assets/Premera.png" },
     ],
   },
   {
@@ -22,6 +23,7 @@ const categories: Category[] = [
       { name: "Facebook / X Banner 1500×500", file: "/PREMERA_Facebook_X_Banner_1500x500.jpg", preview: "/PREMERA_Facebook_X_Banner_1500x500.jpg" },
       { name: "Instagram / Facebook Post 1080×1080", file: "/PREMERA_Instagram_Facebook_Post_1080x1080.jpg", preview: "/PREMERA_Instagram_Facebook_Post_1080x1080.jpg" },
       { name: "Metadata Banner 1200×630", file: "/PREMERA_Metadata_Banner_1200x630.jpg", preview: "/PREMERA_Metadata_Banner_1200x630.jpg" },
+      { name: "Meta Image", file: "/Premera Assets/metaImage.jpg", preview: "/Premera Assets/metaImage.jpg" },
     ],
   },
   {
@@ -53,13 +55,11 @@ const categories: Category[] = [
   {
     title: "Brand Reference",
     assets: [
-      { name: "Asset Contact Sheet", file: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/PREMERA_asset_contact_sheet.png", preview: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/PREMERA_asset_contact_sheet.png" },
-      { name: "Brand Palette (PNG)", file: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/PREMERA_Brand_Palette.png", preview: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/PREMERA_Brand_Palette.png" },
-      { name: "Typography Specimen", file: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/typography_specimen.png", preview: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/typography_specimen.png" },
       { name: "Brand Palette (CSV)", file: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/brand_palette.csv" },
       { name: "Brand Palette (JSON)", file: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/brand_palette.json" },
       { name: "Brand Guidelines (MD)", file: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/brand_guidelines.md" },
       { name: "Fonts & Licences (MD)", file: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/fonts_and_licences.md" },
+      { name: "Name Clearance Notes (MD)", file: "/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/name_clearance_notes.md" },
     ],
   },
   {
@@ -79,7 +79,7 @@ function AssetCard({ asset }: { asset: Asset }) {
   const isImage = asset.preview && /\.(png|jpg|jpeg|webp|svg|ico)$/i.test(asset.preview);
   return (
     <div
-      className="group flex flex-col rounded-xl border overflow-hidden"
+      className="flex flex-col rounded-xl border overflow-hidden"
       style={{ borderColor: "var(--border-subtle)", background: "var(--bg-card)" }}
     >
       {isImage ? (
@@ -88,11 +88,7 @@ function AssetCard({ asset }: { asset: Asset }) {
           style={{ background: "var(--bg-card-alt)" }}
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={asset.preview}
-            alt={asset.name}
-            className="max-h-full max-w-full object-contain"
-          />
+          <img src={asset.preview} alt={asset.name} className="max-h-full max-w-full object-contain" />
         </div>
       ) : (
         <div
@@ -103,10 +99,7 @@ function AssetCard({ asset }: { asset: Asset }) {
         </div>
       )}
       <div className="flex items-center justify-between gap-2 px-3 py-2">
-        <span
-          className="text-xs font-montserrat truncate"
-          style={{ color: "var(--text-secondary)" }}
-        >
+        <span className="text-xs font-montserrat truncate" style={{ color: "var(--text-secondary)" }}>
           {asset.name}
         </span>
         <a
@@ -116,7 +109,11 @@ function AssetCard({ asset }: { asset: Asset }) {
           style={{ color: "var(--color-antique-gold)" }}
           title={`Download ${asset.name}`}
         >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
         </a>
       </div>
     </div>
@@ -130,30 +127,51 @@ export default function AssetsPage() {
       style={{ background: "var(--bg-page)", color: "var(--text-primary)" }}
     >
       <div className="max-w-6xl mx-auto">
+
         {/* Header */}
         <div className="mb-10 text-center">
-          <p
-            className="text-xs tracking-[0.25em] uppercase mb-2"
-            style={{ color: "var(--color-antique-gold)" }}
-          >
+          <p className="text-xs tracking-[0.25em] uppercase mb-2" style={{ color: "var(--color-antique-gold)" }}>
             Brand Resources
           </p>
-          <h1
-            className="font-bodoni text-4xl md:text-5xl mb-3"
-            style={{ color: "var(--text-primary)" }}
-          >
+          <h1 className="font-bodoni text-4xl md:text-5xl mb-3" style={{ color: "var(--text-primary)" }}>
             PREMERA Assets
           </h1>
           <p className="text-sm" style={{ color: "var(--text-muted)" }}>
             Download logos, campaign images, brand kit files and more.
           </p>
-          <div
-            className="mx-auto mt-4 h-px w-24"
-            style={{ background: "var(--gold-line)" }}
-          />
+          <div className="mx-auto mt-4 h-px w-24" style={{ background: "var(--gold-line)" }} />
         </div>
 
-        {/* Categories */}
+        {/* Brand Kit HTML Viewer */}
+        <section className="mb-12">
+          <h2
+            className="font-cormorant text-xl italic mb-4 pb-2 border-b"
+            style={{ color: "var(--text-secondary)", borderColor: "var(--border-subtle)" }}
+          >
+            Brand Kit Reference
+          </h2>
+          <div className="rounded-xl overflow-hidden border" style={{ borderColor: "var(--border-subtle)" }}>
+            <iframe
+              src="/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/index.html"
+              className="w-full"
+              style={{ height: "680px", border: "none" }}
+              title="PREMERA Brand Kit Reference"
+            />
+          </div>
+          <div className="mt-2 flex justify-end">
+            <a
+              href="/Premera Assets/PREMERA_Brand_Asset_Kit/Brand_Reference/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs underline"
+              style={{ color: "var(--color-antique-gold)" }}
+            >
+              Open in new tab ↗
+            </a>
+          </div>
+        </section>
+
+        {/* Asset Categories */}
         {categories.map((cat) => (
           <section key={cat.title} className="mb-12">
             <h2
@@ -169,6 +187,7 @@ export default function AssetsPage() {
             </div>
           </section>
         ))}
+
       </div>
     </main>
   );
