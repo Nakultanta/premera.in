@@ -1,0 +1,15 @@
+name,hex,role,tier,source
+Warm Ivory,#F7EDDD,Primary background / packaging,Primary,Sampled from the approved artwork background
+Antique Gold,#A1631A,Primary gold midtone; foil and key accents,Primary,Sampled from gold lettering and emblem
+Rich Gold,#C3832D,Secondary gold; line work and highlights,Primary,Sampled from gold artwork
+Deep Bronze,#5C2D05,Dark gold shadow / contrast,Primary,Sampled from darkest gold contours
+Peacock Teal,#115552,Signature feather green-teal,Primary,Sampled from feather
+Peacock Emerald,#053229,Deep green feather shadow,Primary,Sampled from feather
+Peacock Blue,#022B7C,Feather-eye blue accent,Secondary,Sampled from feather
+Champagne,#E4CEAE,Warm neutral secondary,Secondary,Sampled from background/metal transitions
+Sand Beige,#D5B68B,Muted neutral secondary,Secondary,Sampled from background/metal transitions
+Gold Highlight,#F6D68C,Bright metallic highlight,Secondary,Sampled from golden highlights
+Teal Highlight,#2BA18C,Bright peacock accent; use sparingly,Secondary,Sampled from feather highlights
+Deep Espresso,#302013,Alternative text colour on ivory,Secondary,Brand-system functional colour
+Dusty Rose (optional),#C98E8A,Optional seasonal apparel accent; not prominent in approved logo,Optional,Suggested supporting colour
+Muted Sage (optional),#87917A,Optional seasonal packaging accent; not prominent in approved logo,Optional,Suggested supporting colour

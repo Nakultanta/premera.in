@@ -1,0 +1,100 @@
+[
+  {
+    "name": "Warm Ivory",
+    "hex": "#F7EDDD",
+    "role": "Primary background / packaging",
+    "tier": "Primary",
+    "source": "Sampled from the approved artwork background"
+  },
+  {
+    "name": "Antique Gold",
+    "hex": "#A1631A",
+    "role": "Primary gold midtone; foil and key accents",
+    "tier": "Primary",
+    "source": "Sampled from gold lettering and emblem"
+  },
+  {
+    "name": "Rich Gold",
+    "hex": "#C3832D",
+    "role": "Secondary gold; line work and highlights",
+    "tier": "Primary",
+    "source": "Sampled from gold artwork"
+  },
+  {
+    "name": "Deep Bronze",
+    "hex": "#5C2D05",
+    "role": "Dark gold shadow / contrast",
+    "tier": "Primary",
+    "source": "Sampled from darkest gold contours"
+  },
+  {
+    "name": "Peacock Teal",
+    "hex": "#115552",
+    "role": "Signature feather green-teal",
+    "tier": "Primary",
+    "source": "Sampled from feather"
+  },
+  {
+    "name": "Peacock Emerald",
+    "hex": "#053229",
+    "role": "Deep green feather shadow",
+    "tier": "Primary",
+    "source": "Sampled from feather"
+  },
+  {
+    "name": "Peacock Blue",
+    "hex": "#022B7C",
+    "role": "Feather-eye blue accent",
+    "tier": "Secondary",
+    "source": "Sampled from feather"
+  },
+  {
+    "name": "Champagne",
+    "hex": "#E4CEAE",
+    "role": "Warm neutral secondary",
+    "tier": "Secondary",
+    "source": "Sampled from background/metal transitions"
+  },
+  {
+    "name": "Sand Beige",
+    "hex": "#D5B68B",
+    "role": "Muted neutral secondary",
+    "tier": "Secondary",
+    "source": "Sampled from background/metal transitions"
+  },
+  {
+    "name": "Gold Highlight",
+    "hex": "#F6D68C",
+    "role": "Bright metallic highlight",
+    "tier": "Secondary",
+    "source": "Sampled from golden highlights"
+  },
+  {
+    "name": "Teal Highlight",
+    "hex": "#2BA18C",
+    "role": "Bright peacock accent; use sparingly",
+    "tier": "Secondary",
+    "source": "Sampled from feather highlights"
+  },
+  {
+    "name": "Deep Espresso",
+    "hex": "#302013",
+    "role": "Alternative text colour on ivory",
+    "tier": "Secondary",
+    "source": "Brand-system functional colour"
+  },
+  {
+    "name": "Dusty Rose (optional)",
+    "hex": "#C98E8A",
+    "role": "Optional seasonal apparel accent; not prominent in approved logo",
+    "tier": "Optional",
+    "source": "Suggested supporting colour"
+  },
+  {
+    "name": "Muted Sage (optional)",
+    "hex": "#87917A",
+    "role": "Optional seasonal packaging accent; not prominent in approved logo",
+    "tier": "Optional",
+    "source": "Suggested supporting colour"
+  }
+]
