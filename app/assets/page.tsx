@@ -98,14 +98,14 @@ function AssetCard({ asset }: { asset: Asset }) {
           📄
         </div>
       )}
-      <div className="flex items-center justify-between gap-2 px-3 py-2">
-        <span className="text-xs font-montserrat truncate" style={{ color: "var(--text-secondary)" }}>
+      <div className="flex items-start justify-between gap-2 px-3 py-2">
+        <span className="text-xs font-montserrat leading-snug" style={{ color: "var(--text-secondary)" }}>
           {asset.name}
         </span>
         <a
           href={asset.file}
           download
-          className="shrink-0 p-1.5 rounded-lg transition-colors"
+          className="shrink-0 mt-0.5 p-1.5 rounded-lg transition-colors"
           style={{ color: "var(--color-antique-gold)" }}
           title={`Download ${asset.name}`}
         >

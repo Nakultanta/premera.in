@@ -1,1 +1,455 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PREMERA Brand Kit</title><style>body{font-family:Arial,sans-serif;max-width:1100px;margin:36px auto;padding:0 20px;background:#F7EDDD;color:#302013}h1,h2{font-family:Georgia,serif;color:#82470A}.card{background:#fffaf3;border:1px solid #D5B68B;border-radius:14px;padding:18px;margin:18px 0}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}.swatch{height:56px;border-radius:10px;border:1px solid #d5c0a2}a{color:#82470A}img{max-width:100%;height:auto}.meta{font-size:13px;color:#6b4d32}</style></head><body><h1>PREMERA — Stage 2 Brand Asset Kit</h1><p>Approved identity: stylised P monogram, peacock feather, LADIES SUITS, “Grace in Every Drape”.</p><div class="card"><h2>Master logo</h2><img style="max-width:550px;display:block;margin:auto" src="../MASTER/PREMERA_Updated_Logo_Concept_1254px.png"></div><div class="card"><h2>Palette</h2><div class="grid"><div><div class="swatch" style="background:#F7EDDD"></div><strong>Warm Ivory</strong><div>#F7EDDD</div><div class="meta">Primary • Primary background / packaging</div></div><div><div class="swatch" style="background:#A1631A"></div><strong>Antique Gold</strong><div>#A1631A</div><div class="meta">Primary • Primary gold midtone; foil and key accents</div></div><div><div class="swatch" style="background:#C3832D"></div><strong>Rich Gold</strong><div>#C3832D</div><div class="meta">Primary • Secondary gold; line work and highlights</div></div><div><div class="swatch" style="background:#5C2D05"></div><strong>Deep Bronze</strong><div>#5C2D05</div><div class="meta">Primary • Dark gold shadow / contrast</div></div><div><div class="swatch" style="background:#115552"></div><strong>Peacock Teal</strong><div>#115552</div><div class="meta">Primary • Signature feather green-teal</div></div><div><div class="swatch" style="background:#053229"></div><strong>Peacock Emerald</strong><div>#053229</div><div class="meta">Primary • Deep green feather shadow</div></div><div><div class="swatch" style="background:#022B7C"></div><strong>Peacock Blue</strong><div>#022B7C</div><div class="meta">Secondary • Feather-eye blue accent</div></div><div><div class="swatch" style="background:#E4CEAE"></div><strong>Champagne</strong><div>#E4CEAE</div><div class="meta">Secondary • Warm neutral secondary</div></div><div><div class="swatch" style="background:#D5B68B"></div><strong>Sand Beige</strong><div>#D5B68B</div><div class="meta">Secondary • Muted neutral secondary</div></div><div><div class="swatch" style="background:#F6D68C"></div><strong>Gold Highlight</strong><div>#F6D68C</div><div class="meta">Secondary • Bright metallic highlight</div></div><div><div class="swatch" style="background:#2BA18C"></div><strong>Teal Highlight</strong><div>#2BA18C</div><div class="meta">Secondary • Bright peacock accent; use sparingly</div></div><div><div class="swatch" style="background:#302013"></div><strong>Deep Espresso</strong><div>#302013</div><div class="meta">Secondary • Alternative text colour on ivory</div></div><div><div class="swatch" style="background:#C98E8A"></div><strong>Dusty Rose (optional)</strong><div>#C98E8A</div><div class="meta">Optional • Optional seasonal apparel accent; not prominent in approved logo</div></div><div><div class="swatch" style="background:#87917A"></div><strong>Muted Sage (optional)</strong><div>#87917A</div><div class="meta">Optional • Optional seasonal packaging accent; not prominent in approved logo</div></div></div></div><div class="card"><h2>Reference files</h2><ul><li><a href="brand_guidelines.md">Brand guidelines</a></li><li><a href="fonts_and_licences.md">Fonts and licences</a></li><li><a href="PREMERA_asset_contact_sheet.png">Asset contact sheet</a></li><li><a href="../SVG/Editable_Text_Lockup_Approximation.svg">Editable SVG text lockup approximation</a></li><li><a href="../SVG/Simplified_Peacock_Feather.svg">Simplified vector peacock feather</a></li></ul><p class="meta">Transparent crops use approximate background removal; raster wrappers are not true vector drawings. Use the approved original where fidelity is paramount.</p></div></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>PREMERA Brand Kit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      :root {
+        --ivory:        #F7EDDD;
+        --ivory-light:  #FFFAF2;
+        --gold:         #A1631A;
+        --rich-gold:    #C3832D;
+        --deep-bronze:  #5C2D05;
+        --teal:         #115552;
+        --emerald:      #053229;
+        --peacock-blue: #022B7C;
+        --champagne:    #E4CEAE;
+        --sand:         #D5B68B;
+        --gold-hi:      #F6D68C;
+        --teal-hi:      #2BA18C;
+        --espresso:     #302013;
+        --dusty-rose:   #C98E8A;
+        --muted-sage:   #87917A;
+        --border:       #E2CBA8;
+        --text:         #1C0E04;
+        --text-muted:   #6B4226;
+      }
+
+      body {
+        font-family: 'Montserrat', Arial, sans-serif;
+        background: var(--ivory);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      /* ── Layout ── */
+      .page { max-width: 1080px; margin: 0 auto; padding: 48px 24px 80px; }
+
+      /* ── Hero ── */
+      .hero {
+        text-align: center;
+        padding: 56px 24px 48px;
+        border-bottom: 1px solid var(--border);
+        margin-bottom: 56px;
+      }
+      .hero-eyebrow {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+      }
+      .hero h1 {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(2.4rem, 5vw, 3.6rem);
+        font-weight: 600;
+        color: var(--deep-bronze);
+        line-height: 1.15;
+        margin-bottom: 16px;
+      }
+      .hero p {
+        font-size: 14px;
+        color: var(--text-muted);
+        max-width: 520px;
+        margin: 0 auto 24px;
+      }
+      .gold-rule {
+        width: 64px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--rich-gold), transparent);
+        margin: 0 auto;
+      }
+
+      /* ── Section ── */
+      .section { margin-bottom: 56px; }
+      .section-label {
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+      .section-title {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: 1.7rem;
+        font-weight: 600;
+        color: var(--deep-bronze);
+        margin-bottom: 4px;
+      }
+      .section-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 16px 0 28px;
+      }
+
+      /* ── Master Logo card ── */
+      .logo-card {
+        background: var(--ivory-light);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 40px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .logo-card img { max-width: 480px; width: 100%; height: auto; }
+
+      /* ── Palette grid ── */
+      .palette-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 16px;
+      }
+      .swatch-card {
+        background: var(--ivory-light);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .swatch-block { height: 64px; width: 100%; }
+      .swatch-info { padding: 10px 12px 12px; }
+      .swatch-name {
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--espresso);
+        margin-bottom: 2px;
+      }
+      .swatch-hex {
+        font-size: 11px;
+        font-family: 'Courier New', monospace;
+        color: var(--gold);
+        margin-bottom: 4px;
+      }
+      .swatch-role {
+        font-size: 10px;
+        color: var(--text-muted);
+        line-height: 1.4;
+      }
+      .swatch-tag {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 9px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 2px 7px;
+        border-radius: 20px;
+        background: rgba(161,99,26,0.1);
+        color: var(--gold);
+      }
+      .swatch-tag.secondary { background: rgba(92,45,5,0.08); color: var(--deep-bronze); }
+      .swatch-tag.optional  { background: rgba(135,145,122,0.12); color: var(--muted-sage); }
+
+      /* ── Typography showcase ── */
+      .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      @media (max-width: 600px) { .type-grid { grid-template-columns: 1fr; } }
+      .type-card {
+        background: var(--ivory-light);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 24px;
+      }
+      .type-card-label { font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+      .type-sample-serif { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; color: var(--deep-bronze); line-height: 1.2; }
+      .type-sample-sans  { font-family: 'Montserrat', sans-serif; font-size: 1rem; font-weight: 500; color: var(--espresso); letter-spacing: 0.04em; }
+      .type-meta { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+
+      /* ── Reference files ── */
+      .ref-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+      .ref-list li {
+        background: var(--ivory-light);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .ref-icon { font-size: 18px; flex-shrink: 0; }
+      .ref-list a {
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--deep-bronze);
+        text-decoration: none;
+      }
+      .ref-list a:hover { color: var(--gold); text-decoration: underline; }
+      .ref-ext { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-left: auto; }
+
+      /* ── Notice ── */
+      .notice {
+        background: rgba(161,99,26,0.07);
+        border: 1px solid rgba(161,99,26,0.2);
+        border-radius: 10px;
+        padding: 14px 18px;
+        font-size: 12px;
+        color: var(--text-muted);
+        margin-top: 20px;
+        line-height: 1.6;
+      }
+
+      /* ── Footer ── */
+      .footer {
+        text-align: center;
+        padding-top: 40px;
+        border-top: 1px solid var(--border);
+        font-size: 11px;
+        color: var(--text-muted);
+        letter-spacing: 0.06em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+
+      <!-- Hero -->
+      <div class="hero">
+        <p class="hero-eyebrow">Stage 2 Brand Asset Kit</p>
+        <h1>PREMERA<br><em style="font-weight:400;font-size:0.65em;color:var(--gold)">Brand Reference</em></h1>
+        <p>Approved identity — stylised P monogram, peacock feather, LADIES SUITS, "Grace in Every Drape".</p>
+        <div class="gold-rule"></div>
+      </div>
+
+      <!-- Master Logo -->
+      <div class="section">
+        <p class="section-label">Identity</p>
+        <h2 class="section-title">Master Logo</h2>
+        <div class="section-divider"></div>
+        <div class="logo-card">
+          <img src="../MASTER/PREMERA_Updated_Logo_Concept_1254px.png" alt="PREMERA Master Logo" />
+        </div>
+      </div>
+
+      <!-- Colour Palette -->
+      <div class="section">
+        <p class="section-label">Colour System</p>
+        <h2 class="section-title">Brand Palette</h2>
+        <div class="section-divider"></div>
+        <div class="palette-grid">
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#F7EDDD"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Warm Ivory</div>
+              <div class="swatch-hex">#F7EDDD</div>
+              <div class="swatch-role">Primary background / packaging</div>
+              <span class="swatch-tag">Primary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#A1631A"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Antique Gold</div>
+              <div class="swatch-hex">#A1631A</div>
+              <div class="swatch-role">Primary gold midtone; foil & key accents</div>
+              <span class="swatch-tag">Primary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#C3832D"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Rich Gold</div>
+              <div class="swatch-hex">#C3832D</div>
+              <div class="swatch-role">Secondary gold; line work & highlights</div>
+              <span class="swatch-tag">Primary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#5C2D05"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Deep Bronze</div>
+              <div class="swatch-hex">#5C2D05</div>
+              <div class="swatch-role">Dark gold shadow / contrast</div>
+              <span class="swatch-tag">Primary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#115552"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Peacock Teal</div>
+              <div class="swatch-hex">#115552</div>
+              <div class="swatch-role">Signature feather green-teal</div>
+              <span class="swatch-tag">Primary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#053229"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Peacock Emerald</div>
+              <div class="swatch-hex">#053229</div>
+              <div class="swatch-role">Deep green feather shadow</div>
+              <span class="swatch-tag">Primary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#022B7C"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Peacock Blue</div>
+              <div class="swatch-hex">#022B7C</div>
+              <div class="swatch-role">Feather-eye blue accent</div>
+              <span class="swatch-tag secondary">Secondary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#E4CEAE;border-bottom:1px solid #d5b68b"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Champagne</div>
+              <div class="swatch-hex">#E4CEAE</div>
+              <div class="swatch-role">Warm neutral secondary</div>
+              <span class="swatch-tag secondary">Secondary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#D5B68B"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Sand Beige</div>
+              <div class="swatch-hex">#D5B68B</div>
+              <div class="swatch-role">Muted neutral secondary</div>
+              <span class="swatch-tag secondary">Secondary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#F6D68C"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Gold Highlight</div>
+              <div class="swatch-hex">#F6D68C</div>
+              <div class="swatch-role">Bright metallic highlight</div>
+              <span class="swatch-tag secondary">Secondary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#2BA18C"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Teal Highlight</div>
+              <div class="swatch-hex">#2BA18C</div>
+              <div class="swatch-role">Bright peacock accent; use sparingly</div>
+              <span class="swatch-tag secondary">Secondary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#302013"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Deep Espresso</div>
+              <div class="swatch-hex">#302013</div>
+              <div class="swatch-role">Alternative text on ivory</div>
+              <span class="swatch-tag secondary">Secondary</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#C98E8A"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Dusty Rose</div>
+              <div class="swatch-hex">#C98E8A</div>
+              <div class="swatch-role">Seasonal apparel accent</div>
+              <span class="swatch-tag optional">Optional</span>
+            </div>
+          </div>
+
+          <div class="swatch-card">
+            <div class="swatch-block" style="background:#87917A"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">Muted Sage</div>
+              <div class="swatch-hex">#87917A</div>
+              <div class="swatch-role">Seasonal packaging accent</div>
+              <span class="swatch-tag optional">Optional</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="section">
+        <p class="section-label">Typography</p>
+        <h2 class="section-title">Brand Typefaces</h2>
+        <div class="section-divider"></div>
+        <div class="type-grid">
+          <div class="type-card">
+            <div class="type-card-label">Display / Headlines</div>
+            <div class="type-sample-serif">Cormorant Garamond</div>
+            <div class="type-sample-serif" style="font-style:italic;font-size:1.4rem;color:var(--gold)">Grace in Every Drape</div>
+            <div class="type-meta">Weights: 400 Regular, 600 SemiBold, 400 Italic · Use for headings, product names, editorial copy</div>
+          </div>
+          <div class="type-card">
+            <div class="type-card-label">Body / UI</div>
+            <div class="type-sample-sans">Montserrat</div>
+            <div class="type-sample-sans" style="font-size:0.85rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);margin-top:6px">LADIES SUITS</div>
+            <div class="type-meta">Weights: 400 Regular, 500 Medium, 600 SemiBold · Use for body text, labels, navigation, UI elements</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reference Files -->
+      <div class="section">
+        <p class="section-label">Downloads</p>
+        <h2 class="section-title">Reference Files</h2>
+        <div class="section-divider"></div>
+        <ul class="ref-list">
+          <li>
+            <span class="ref-icon">📋</span>
+            <a href="brand_guidelines.md">Brand Guidelines</a>
+            <span class="ref-ext">MD</span>
+          </li>
+          <li>
+            <span class="ref-icon">🔤</span>
+            <a href="fonts_and_licences.md">Fonts &amp; Licences</a>
+            <span class="ref-ext">MD</span>
+          </li>
+          <li>
+            <span class="ref-icon">🖼</span>
+            <a href="PREMERA_asset_contact_sheet.png">Asset Contact Sheet</a>
+            <span class="ref-ext">PNG</span>
+          </li>
+          <li>
+            <span class="ref-icon">✏️</span>
+            <a href="../SVG/Editable_Text_Lockup_Approximation.svg">Editable SVG Text Lockup</a>
+            <span class="ref-ext">SVG</span>
+          </li>
+          <li>
+            <span class="ref-icon">🦚</span>
+            <a href="../SVG/Simplified_Peacock_Feather.svg">Simplified Peacock Feather</a>
+            <span class="ref-ext">SVG</span>
+          </li>
+        </ul>
+        <div class="notice">
+          ⚠️ Transparent crops use approximate background removal; raster wrappers are not true vector drawings. Use the approved original where fidelity is paramount.
+        </div>
+      </div>
+
+      <div class="footer">
+        PREMERA — Confidential Brand Asset Kit &nbsp;·&nbsp; Stage 2
+      </div>
+
+    </div>
+  </body>
+</html>
