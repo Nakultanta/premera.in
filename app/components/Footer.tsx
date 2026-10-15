@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ThemeToggle from "./ThemeToggle";
 
 const INSTAGRAM_URL = "https://www.instagram.com/premera.in/";
@@ -37,9 +38,18 @@ export default function Footer({ year }: { year?: number }) {
 
             {/* Brand */}
             <div className="flex flex-col items-center md:items-start gap-2">
-              <a href="/" className="font-bodoni text-[28px] font-medium tracking-[0.1em] text-[#F5EAD8] transition hover:text-[#C3832D]">
-                PREMERA
-              </a>
+              <div className="flex items-center gap-3 mb-1">
+                <Image
+                  src="/prema-logo-withhout-text-removebg.png"
+                  alt="PREMERA mark"
+                  width={400}
+                  height={400}
+                  className="h-[38px] w-auto object-contain opacity-80"
+                />
+                <a href="/" className="font-bodoni text-[28px] font-medium tracking-[0.1em] text-[#F5EAD8] transition hover:text-[#C3832D]">
+                  PREMERA
+                </a>
+              </div>
               <p className="text-[10px] tracking-[0.2em] uppercase text-[#876B4A]">
                 Ladies&rsquo; Suits &amp; Ethnic Wear
               </p>
@@ -94,9 +104,6 @@ export default function Footer({ year }: { year?: number }) {
           <div className="flex flex-col items-center gap-3 text-center md:flex-row md:justify-between md:text-left">
             <span className="text-[10px] tracking-[0.08em] uppercase text-[#4a2e14]">
               &copy; {currentYear} PREMERA. All rights reserved.
-            </span>
-            <span className="font-cormorant text-[17px] italic text-[#6b4a28]">
-              Grace in every drape.
             </span>
             <div className="flex items-center gap-2.5">
               <span className="text-[10px] tracking-[0.08em] uppercase text-[#4a2e14]">Theme</span>
