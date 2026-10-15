@@ -143,6 +143,7 @@ export default function AssetsPage() {
         </div>
 
 
+        {categories.map((cat) => (
           <section key={cat.title} className="mb-12">
             <h2
               className="font-cormorant text-xl italic mb-4 pb-2 border-b"
