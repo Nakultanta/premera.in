@@ -142,6 +142,22 @@ export default function AssetsPage() {
           <div className="mx-auto mt-4 h-px w-24" style={{ background: "var(--gold-line)" }} />
         </div>
 
+
+          <section key={cat.title} className="mb-12">
+            <h2
+              className="font-cormorant text-xl italic mb-4 pb-2 border-b"
+              style={{ color: "var(--text-secondary)", borderColor: "var(--border-subtle)" }}
+            >
+              {cat.title}
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {cat.assets.map((asset) => (
+                <AssetCard key={asset.file} asset={asset} />
+              ))}
+            </div>
+          </section>
+        ))}
+
         {/* Brand Kit HTML Viewer */}
         <section className="mb-12">
           <h2
@@ -170,23 +186,6 @@ export default function AssetsPage() {
             </a>
           </div>
         </section>
-
-        {/* Asset Categories */}
-        {categories.map((cat) => (
-          <section key={cat.title} className="mb-12">
-            <h2
-              className="font-cormorant text-xl italic mb-4 pb-2 border-b"
-              style={{ color: "var(--text-secondary)", borderColor: "var(--border-subtle)" }}
-            >
-              {cat.title}
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {cat.assets.map((asset) => (
-                <AssetCard key={asset.file} asset={asset} />
-              ))}
-            </div>
-          </section>
-        ))}
 
       </div>
     </main>
